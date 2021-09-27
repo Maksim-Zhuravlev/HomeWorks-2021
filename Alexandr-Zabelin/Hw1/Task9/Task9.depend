@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1632763513 source:d:\home works\ebm\homeworks-2021\hw1\task9\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
