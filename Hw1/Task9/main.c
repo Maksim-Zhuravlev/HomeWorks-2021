@@ -1,23 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 int main()
 {
-    char s1[] = "12", s[] = "123454212";
-    int k = 0, size_Of_S = sizeof(s) / sizeof(s[0]), size_Of_S1 = sizeof(s1) / sizeof(s1[0]);
-    printf("S: %d\nS1: %d", size_Of_S, size_Of_S1);
-    for (int i = 0; i <= size_Of_S - size_Of_S1; i++) {
+    char s1[101], s[101];
+    int k = 0;
+    printf("Enter S (not more than 100 symbols): ");
+    fgets(s, 100, stdin);
+    fflush(stdin);
+    printf("\nEnter S1 (not more than 100 symbols): ");
+    fgets(s1, 100, stdin);
+    fflush(stdin);
+    int len_S = (int)strlen(s), len_S1 = (int)strlen(s1);
+    for (int i = 0; i <= (len_S - len_S1); i++) {
         if (s[i] == s1[0]) {
             int ok = 1;
-            for(j = 1; j < size_Of_S1; j++) {
+            for(int j = 1; j < len_S1 - 1; j++) {
                 if (s1[j] != s[i + j]) {
                     ok = 0;
                     break;
                 }
             }
-            k += ok
+            k += ok;
         }
     }
-    printf("k = %d", k);
+    printf("\nS1 is in S %d time(-s)", k);
     return 0;
 }
