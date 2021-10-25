@@ -60,7 +60,7 @@ fitsBits – возвращает 1, если x может быть предст
 int fits_bits(int x, int n) {
     int minus_one = ~1 + 1;
     x >>= n + minus_one;
-    return !(x ^ 0) | !(x ^ minus_one);    //| !(((x | minus_one) >> 31) & 1);
+    return !x | !(x ^ minus_one);    //| !(((x | minus_one) >> 31) & 1);
 }
 
 
@@ -72,19 +72,20 @@ sign – возвращает 1 , 0 и - 1, если x > 0, x == 0, x < 0 соо
 Предел операций : 10
 */
 int sign(int x) {
-    return !(x >> 23) + (~((~x + 1) >> 23));    // (x > 0) - (-x > 0)
+//    return !(x >> 31) + (~((~x + 1) >> 31));    // (x > 0) - (-x > 0)
+    return !!x | x >> 31;
 }
 
 
 /**
 getByte – извлекает n - ый байт из x
-Нумерация с 0 ( младший ) to 3 ( старший )
+Нумерация с 0 ( младший ) to 3 ( старший )+
 Пример : getByte (0x12345678,1) = 0x56
 Допустимые операции : ! ~ & ^ | + << >>
 Предел операций : 6
 */
 int get_byte(int x, int n) {
-    return (x << ((4 + ~n) << 3)) >> 24;
+    return (int)((unsigned int)x << ((4 + ~n) << 3)) >> 24;
 }
 
 
@@ -135,7 +136,7 @@ conditional – аналог тернарного оператора x ? y : z
 int conditional(int x, int y, int z) {
     int minus_one = ~1 + 1;
     int x_is_zero = !(((x | (~x + 1)) >> 31) & 1);
-    return (x_is_zero + minus_one) & y | (!x_is_zero + minus_one) & z;
+    return ((x_is_zero + minus_one) & y) | ((!x_is_zero + minus_one) & z);
 }
 
 
@@ -157,7 +158,11 @@ int main(){
 
     printf("bit_xor(0b1100, 0b1010) = %d\n", bit_xor(0b1100, 0b1010));
 
-    printf("get_byte(0x12345678, 1) = 0x%x\n", get_byte(0x12345678,1));
+    printf("get_byte(0x12345678, 1) = 0x%x\n"
+           "get_byte(0xfedcba98, 1) = 0x%x\n",
+            get_byte(0x12345678,1),
+            get_byte(0xfedcba98,3)
+            );
 
     printf("sign(10) = %d\n"
            "sign(0) = %d\n"
@@ -168,9 +173,19 @@ int main(){
            );
 
     printf("is_power2(25) = %d\n"
-           "is_power2(64) =  %d\n",
+           "is_power2(-25) = %d\n"
+           "is_power2(64) =  %d\n"
+           "is_power2(-64) =  %d\n"
+           "is_power2(48) =  %d\n"
+           "is_power2(-48) =  %d\n"
+           "is_power2(0) =  %d\n",
            is_power2(25),
-           is_power2(64)
+           is_power2(-25),
+           is_power2(64),
+           is_power2(-64),
+           is_power2(48),
+           is_power2(-48),
+           is_power2(0)
            );
 
     printf("third_bits() = %d\n", third_bits());
@@ -193,12 +208,14 @@ int main(){
            fits_bits (16, 5),
            fits_bits (-8, 4),
            fits_bits (-10, 3)
-    );
+           );
 
     printf("bang (3) = %d\n"
-           "bang (0) = %d\n",
+           "bang (0) = %d\n"
+           "bang (-3) = %d\n",
            bang (3),
-           bang (0)
+           bang (0),
+           bang (-3)
            );
 
     printf("conditional(2, 3, 4) = %d\n"
