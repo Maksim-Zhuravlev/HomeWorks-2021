@@ -1,9 +1,11 @@
 #include <stdio.h>
+
 #define MAX_LEN 256
 
 int strLen(const char *str)
 {
     size_t count = 0;
+
     while (str[count] != '\n')
     {
         count++;

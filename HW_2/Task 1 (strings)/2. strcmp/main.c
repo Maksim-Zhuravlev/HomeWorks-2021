@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #define MAX_LEN 256
 
 int strLen(const char *str)

@@ -14,7 +14,6 @@ void strCat(char *str_1, const char *str_2)
     {
         str_1[i + j] = str_2[j];
     }
-
     str_1[i + j] = '\0';
 }
 
