@@ -15,8 +15,9 @@
 
 size_t strlen_(const char *str) {
     size_t i = 0;
-    while (str[i] != '\0')
+    while (str[i] != '\0') {
         i++;
+    }
 
     return i;
 }
@@ -24,8 +25,9 @@ size_t strlen_(const char *str) {
 
 int strcmp_(const char *lhs, const char *rhs) {
     int i = 0;
-    while (lhs[i] == rhs[i] && lhs[i] != '\0')
+    while (lhs[i] == rhs[i] && lhs[i] != '\0') {
         i++;
+    }
 
     return (lhs[i] < rhs[i]) ? -1 : (lhs[i] > rhs[i] ? 1 : 0);
 }
@@ -33,9 +35,9 @@ int strcmp_(const char *lhs, const char *rhs) {
 
 char *strcpy_(char *dest, const char *src) {
     int i = 0;
-    do
+    do {
         dest[i] = src[i];
-    while (src[i++] != '\0');
+    } while (src[i++] != '\0');
 
     return dest;
 }
@@ -45,8 +47,9 @@ char *strcat_(char *dest, const char *src) {
     int i = 0;
     int j = 0;
 
-    while (dest[i] != '\0')
+    while (dest[i] != '\0') {
         i++;
+    }
 
     do {
         dest[i] = src[j];

@@ -32,7 +32,10 @@ int div_(int dividend_, int divisor_) {
             accumulator += divisor << i;
         }
     }
-    if (answer == INT_MIN && sign == 1) return 0;
+    if (answer == INT_MIN && sign == 1) {
+        return 0;
+    }
+
     return accumulator == dividend ? answer * sign : 0;
 }
 
