@@ -3,26 +3,28 @@
 #include <string.h>
 
 
-int min(int a, int b){
+int min(int a, int b) {
     return (a <= b) ? a : b;
 }
 
 
 /// https://ru.wikipedia.org/wiki/Z-функция
-int* z_function(const char *string, size_t string_len){
-    int left = 0, 
-        right = 0;
-    int *z_func = (int*)malloc(sizeof(int) * string_len);
-    for (int i = 0; i < string_len; i++)
+int *z_function(const char *string, size_t string_len) {
+    int left = 0;
+    int right = 0;
+    int *z_func = (int *) malloc(sizeof(int) * string_len);
+    for (int i = 0; i < string_len; i++) {
         z_func[i] = 0;
+    }
 
-    for (int i = 1; i < string_len; i++){
-        if (i < right)
+    for (int i = 1; i < string_len; i++) {
+        if (i < right) {
             z_func[i] = min(right - i + 1, z_func[i - left]);
-        while (i + z_func[i] < string_len && string[z_func[i]] == string[i + z_func[i]]){
+        }
+        while (i + z_func[i] < string_len && string[z_func[i]] == string[i + z_func[i]]) {
             z_func[i] += 1;
         }
-        if (i + z_func[i] - 1 > right){
+        if (i + z_func[i] - 1 > right) {
             left = i;
             right = left + z_func[i] - 1;
         }
@@ -32,9 +34,10 @@ int* z_function(const char *string, size_t string_len){
 }
 
 
-int count_substrings(char *string, size_t string_len, char *substring, size_t substring_len){
-    if (substring_len == 0)
+int count_substrings(char *string, size_t string_len, char *substring, size_t substring_len) {
+    if (substring_len == 0) {
         return 0;
+    }
 
     size_t concat_len = string_len + substring_len + 1;
     char concat[concat_len];
@@ -44,21 +47,20 @@ int count_substrings(char *string, size_t string_len, char *substring, size_t su
 
     int count = 0;
     int *z_function_results = z_function(concat, concat_len);
-    for (size_t i = substring_len + 1; i < concat_len; i++)
-        if (z_function_results[i] >= substring_len)
+    for (size_t i = substring_len + 1; i < concat_len; i++) {
+        if (z_function_results[i] >= substring_len) {
             count++;
+        }
+    }
 
     free(z_function_results);
     return count;
 }
 
 
-int main(){
-    char *string = NULL,
-         *substring = NULL;
-    size_t buf_len = 100,
-           string_len,
-           substring_len;
+int main() {
+    char *string = NULL, *substring = NULL;
+    size_t buf_len = 100, string_len, substring_len;
 
     printf("Enter string >>> ");
     string_len = getline(&string, &buf_len, stdin) - 1;
