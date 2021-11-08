@@ -28,7 +28,7 @@ int getByte(int x, int n)
 	return (x >> (n << 3)) & 255;
 }
 
-int logicalShift1(int x, int n)
+int logicalShift(int x, int n)
 {
 	int mask = ((1 << 31) >> n) << 1;
 	return (x >> n) & ~mask;
