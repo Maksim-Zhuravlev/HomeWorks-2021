@@ -13,7 +13,7 @@
 */
 
 
-#include <stdio.h>
+#include <assert.h>
 
 
 /**
@@ -85,7 +85,8 @@ getByte – извлекает n - ый байт из x
 Предел операций : 6
 */
 int getByte(int x, int n) {
-    return (int) ((unsigned int) x << ((4 + ~n) << 3)) >> 24;
+//    return (int) (unsigned int)(x << ((4 + ~n) << 3)) >> 24;
+    return (x >> (n << 3)) & 0xff;
 }
 
 
@@ -153,5 +154,44 @@ int isPower2(int x) {
 
 
 int main() {
-    printf("bitAnd(0b1100, 0b1010) = %d\n", bitAnd(0b1100, 0b1010));
+    assert(bitAnd(0b1100, 0b1010) == 0b1000);
+
+    assert(bitXor(0b1100, 0b1010) == 0b0110);
+
+    assert(getByte(0x12345678, 1) == 0x56);
+    assert(getByte(0xfedcba98, 3) == 0xfe);
+
+    assert(sign(10) == 1);
+    assert(sign(0) == 0);
+    assert(sign(-10) == -1);
+
+    assert(isPower2(25) == 0);
+    assert(isPower2(-25) == 0);
+    assert(isPower2(64) == 1);
+    assert(isPower2(-64) == 0);
+    assert(isPower2(48) == 0);
+    assert(isPower2(-48) == 0);
+    assert(isPower2(0) == 1);
+
+    assert(thirdBits() == 613566756);
+
+    assert(logicalShift(0x87654321, 4) == 0x8765432);
+    assert(logicalShift(0x87654321, 10) == 0x21d950);
+
+    assert(addOK(0x80000000, 0x80000000) == 0);
+    assert(addOK(0x80000000, 0x70000000) == 1);
+    assert(addOK(0x70000000, 0x70000000) == 0);
+
+    assert(fitsBits(24, 6) == 1);
+    assert(fitsBits(16, 5) == 0);
+    assert(fitsBits(-8, 4) == 1);
+    assert(fitsBits(-10, 3) == 0);
+
+    assert(bang(3) == 1);
+    assert(bang(0) == 0);
+    assert(bang(-3) == 1);
+
+    assert(conditional(2, 3, 4) == 3);
+    assert(conditional(0, 5, 6) == 6);
+    assert(conditional(-3, 7, 8) == 7);
 }
