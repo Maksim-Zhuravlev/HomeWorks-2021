@@ -15,6 +15,7 @@ int div(int divisor, int dividend) {
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <assert.h>
 
 
 int div_(int dividend_, int divisor_) {
@@ -41,27 +42,17 @@ int div_(int dividend_, int divisor_) {
 
 
 int main() {
-    int a, b;
-
-    printf("1 / 0 = %d\n"
-           "16 / 4 = %d\n"
-           "16 / 3 = %d\n"
-           "21 / 4 = %d\n"
-           "21 / 3 = %d\n"
-           "INT_MIN / -1 = %d\n"
-           "INT_MIN / 1 = %d\n"
-           "INT_MIN / INT_MIN = %d\n",
-           div_(1, 0),
-           div_(16, 4),
-           div_(16, 3),
-           div_(21, 2),
-           div_(21, 3),
-           div_(INT_MIN, -1),
-           div_(INT_MIN, 1),
-           div_(INT_MIN, INT_MIN)
-    );
+    assert(div_(1, 0) == 0);
+    assert(div_(16, 4) == 4);
+    assert(div_(16, 3) == 0);
+    assert(div_(21, 2) == 0);
+    assert(div_(21, 3) == 7);
+    assert(div_(INT_MIN, -1) == 0);
+    assert(div_(INT_MIN, 1) == -2147483648);
+    assert(div_(INT_MIN, INT_MIN) == 1);
 
     int i = 10;
+    int a, b;
     while (i--) {
         printf("a, b = ");
         scanf("%d %d", &a, &b);
