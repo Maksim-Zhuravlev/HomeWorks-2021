@@ -20,14 +20,18 @@ int bitXor(const int x, const int y) {
 }
 
 int thirdBits(void) {
-	return 1227133513;      /*  2^30 + 2^27 + ... + 2^3 + 2^0  */
+	const int x = 73;
+	int result;
+	
+	result = (x << 24) + (x << 15) + (x << 6) + 9;
+	return result;
 }
 
 int fitsBits(int x, int n) {
 	int x_temporary, result;
 	
-	x = x >> (n - 1);              /* Операция "-" определена как + (-int) */
-	x_temporary = !(x + 1);        /* В случае, если x влезает в n бит, то значение x после сдвига будет либо = 0, либо = 1*/
+	x = x >> (n - 1);              
+	x_temporary = !(x + 1);        
 	x = !x;
 	result = x | x_temporary;
 	return result;
@@ -37,34 +41,37 @@ int sign(int x) {
 	const int not_zero = !(!x);     
 	int result;
 	
-	x = x >> 31;      /* для неотрицательных x результат будет = -1, для положительных = 0 */
-	result = x | not_zero;        /* на отрицательное число не влияет, а если x - положительное, то значение становится = 1 */
+	x = x >> 31; 
+	result = x | not_zero;        
 	return result;
 }
 
 int getByte(int x, int n) {
 	int result;
 	
-	x = x >> (n + n + n + n + n + n + n + n);     /* Операцию "*" использовать нельзя(, поэтому вручную сдвигаем нужный байт на первые 8 бит */
-	result = x & 0xFF;        /* Берем только последние 8 бит */
+	x = x >> (n + n + n + n + n + n + n + n);   
+	result = x & 0xFF;    
 	return result;
 }
 
 int logicalShift(int x, int n) {
 	int result;
+	int temporary_var;
+	int zero_n_check = ~((!!n) << 31);
 	
-	x = x >> 1;
-	x = x & 2147483647;       /*  ==2^31 - 1   обнуляем 31 бит, чтобы сдвиги были логическими*/
-	result = x >> (n - 1);
+	temporary_var = ~(1 << 31);
+	x = x >> (!!n);
+	x = x & (temporary_var | zero_n_check);     
+	result = (x >> (!n + n - 1)) ;
 	return result;
 }
 
 int addOK(long long x, long long y) {
-	long long legal_cheat;                    /* Код из функции fitsBits */
+	long long legal_cheat;                 
 	int temporary_var, result;
 	
 	legal_cheat = x + y;
-	legal_cheat = legal_cheat >> 32;          /* Судя по примеру, речь идет только о неотрицательных числах. В случае использования отрицательных чисел в доп коде заменить "32" на "31" */
+	legal_cheat = legal_cheat >> 31;        
 	temporary_var = !(legal_cheat + 1);
 	legal_cheat = !legal_cheat;
 	result = legal_cheat | temporary_var;
