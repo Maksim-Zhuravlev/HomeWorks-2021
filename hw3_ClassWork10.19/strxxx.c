@@ -32,7 +32,9 @@ char* myStrcpy(char* str1, const char* str2) {
 
 char* myStrcat(char* str1, const char* str2) {
 	char* curr1 = str1;
-	while (*curr1) ++curr1; //доходим до конца строки 1
+	while (*curr1) {  // доходим до конца строки 1
+		++curr1;
+	}
 	while (*str2) { // пока не конец строки 2 копируем текущий символ
 		*curr1 = *str2;
 		++curr1;
