@@ -11,8 +11,12 @@ int main() {
         while (!(s[j] - ' ')) --j;
         char si = s[i];
         char sj = s[j];
-        if (si < 'a') si += 'a' - 'A';
-        if (sj < 'a') sj += 'a' - 'A';
+        if (si < 'a') {
+            si += 'a' - 'A';
+        }
+        if (sj < 'a') {
+            sj += 'a' - 'A';
+        }
         if (si != sj) {
             printf("-\n");
             return 0;

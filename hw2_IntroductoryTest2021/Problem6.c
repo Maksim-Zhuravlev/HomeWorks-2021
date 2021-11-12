@@ -8,7 +8,9 @@ int main() {
 			printf("0");
 			return 0;
 		}
-		if (a[i] < 0) sign *= -1;
+		if (a[i] < 0) {
+			sign *= -1;
+		}
 	}
 	if (sign < 0) {
 		printf("-");

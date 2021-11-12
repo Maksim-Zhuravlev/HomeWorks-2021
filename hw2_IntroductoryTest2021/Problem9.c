@@ -15,7 +15,9 @@ int main() {
                 break;
             }
         }
-        if (f) ++kol;
+        if (f) {
+            ++kol;
+        }
     }
     printf("%d\n", kol);
     return 0;
