@@ -7,8 +7,12 @@ int main() {
 
     int i = 0, j = strlen(s) - 1;
     while (i < j) {
-        while (!(s[i] - ' ')) ++i;
-        while (!(s[j] - ' ')) --j;
+        while (!(s[i] - ' ')) {
+            ++i;
+        }
+        while (!(s[j] - ' ')) {
+            --j;
+        }
         char si = s[i];
         char sj = s[j];
         if (si < 'a') {
