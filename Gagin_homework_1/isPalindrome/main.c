@@ -1,78 +1,45 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
-int isTrashStr(const char *str)
+void low_chars(char str[500])
 {
-
-	for (int i = 0; i < strlen(str) - 1 ; i++)
+	for (int i = 0; i < strlen(str); i++)
 	{
-		int a = (int) str[i]; //ASCII number;
-		if ((a >= 32 && a <= 34) || a == 39 || a == 44 || a == 46 || a == 63 || (a >= 65 && a <= 90) || (a >= 97 && a <= 122))
-		{
-			continue;
-		}
-		return 1;
+		str[i] = tolower(str[i]);
 	}
-	return 0;
 }
 
-int main() {
-	const short MaxLenOfStr = 500;
-	char *str = (char *) malloc(sizeof(char) * MaxLenOfStr);
-	int str_len = 0;
+int main()
+{
+	char str[500] = "Deer Madam, Reed.";
+	int str_len = 0, k = 0;
 	short flag = 0;
+	int new_len = 0;
 
 	printf("This program determines whether a string is a palindrome.\n");
-	while(1)
+	printf("Our string:");
+	printf("%s\n",str);
+	for (int i = 0; i < strlen(str); i++)
 	{
-		printf("Enter the string which contains only english letters, next symbols: '' !'?,.\" '' and whitespace:");
-		fgets(str, MaxLenOfStr, stdin);
-		if (isTrashStr(str))
+		if (str[i] != ' ' && str[i] != ',' && str[i] != '.' && str[i] != '!' && str[i] != '?')
 		{
-			printf("Error!\n");
-		}
-		else
-		{
-			break;
+			str[new_len] = str[i];
+			new_len++;
 		}
 	}
+	str[new_len] = '\n';
+	low_chars(str);
 	for (int i = 0; str[i] != '\n'; i++)
 	{
-		if (((int) str[i]) == 32 || ((int) str[i]) == 34 || ((int) str[i]) == 39 || ((int) str[i]) == 33 || ((int) str[i]) == 44 || ((int) str[i]) == 46 || ((int) str[i]) == 63)
+		if (str[i] == str [new_len - k - 1])
 		{
-			for (int k = i; str[k] != '\0'; k++)
-			{
-				str[k] = str[k + 1];
-			}
-			i--;
+			k++;
 		}
 		else
 		{
-			str[i] = (char) toupper(str[i]);
-			str_len += 1;
-		}
-	}
-	for (int i = 0; str[i] != '\n'; i++)
-	{
-
-		if (i >= str_len - 1)
-		{
+			flag += 1;
 			break;
-		}
-		else
-		{
-			if (str[i] == str [str_len - 1])
-			{
-				str_len -= 1;
-				continue;
-			}
-			else
-			{
-				flag += 1;
-				break;
-			}
 		}
 	}
 	if (flag == 0)

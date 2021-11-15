@@ -1,46 +1,17 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 
-int isTrash (const char *str)
+int main()
 {
-	for (int i = 0; i < strlen(str) - 1; i++)
-	{
-		if (!isdigit(str[i]) || str[0] == '0' || i > 8)
-			return 1;
-	}
-	return 0;
-}
-
-int main() {
-	const short MaxLenOfStr = 50;
 	long long number, degree, multi, answer = 1;
-	char *str_1 = (char *) malloc(sizeof(char) * MaxLenOfStr);
-	char *str_2 = (char *) malloc(sizeof(char) * MaxLenOfStr);
 	short flag = 0;
 	const long long upper_bound = 9223372036854775807;
 	const long long square_upper_bound = 3037000499;
 
 	printf("This program can effectively raise to an integer power.\n");
-	while(1)
-	{
-		printf("Enter a number:");
-		fgets(str_1, MaxLenOfStr, stdin);
-		printf("Enter the degree of your number:");
-		fgets(str_2, MaxLenOfStr, stdin);
-
-		if (isTrash(str_1) || isTrash(str_2))
-		{
-			printf("Error! Enter only natural numbers which won't cause an overflow (less than a billion).\n");
-		}
-		else
-		{
-			break;
-		}
-	}
-	number = strtoll(str_1, 0 ,10);
-	degree = strtoll(str_2, 0, 10);
+	printf("Enter a number:");
+	scanf("%lld", &number);
+	printf("Enter the degree of your number:");
+	scanf("%lld", &degree);
 	multi = number;
 	while (degree != 0)
 	{
