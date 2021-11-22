@@ -6,7 +6,7 @@
 */
 int bitAnd(int x, int y) {
 	return ~(~x | ~y);
-}
+} 
 /*
 * bitXor - x^y , используя ~ and &
 * Пример: bitXor(4, 5) = 1
@@ -15,16 +15,16 @@ int bitAnd(int x, int y) {
 */
 int bitXor(int x, int y) {
 	return ~(~(~x & y) & ~(x & ~y));
-}
+} 
 /*
 * thirdBits – возвращает int, каждый третий бит которого, считая с младшего, 1, остальные биты 0.
 * Допустимые операции: ! ~ & ^ | + << >>
 * Предел операций: 8
 */
 int thirdBits(void) {
-	int r = 73;
-	return r | (r << 9) | (r << 18) | (r << 27);
-}
+	int r = 36;
+	return r | (r << 6) | (r << 6) | (r << 6) | (r << 6);
+} 
 /*
 * fitsBits – возвращает 1, если x может быть представлен на машине с n-разрядами (доп. код)
 * 1 <= n <= 32
@@ -33,9 +33,9 @@ int thirdBits(void) {
 * Предел операций: 15
 */
 int fitsBits(int x, int n) {
-	int f = 33 + ~n;
-	return !(x ^ ((x << f) >> f));
-}
+	int f = x >> (n + ~0);
+	return !f | !(f+1);
+} 
 /*
 * sign – возвращает 1, 0 и -1, если x > 0, x== 0, x < 0 соответственно
 * Пример: sign(130) = 1
@@ -45,7 +45,7 @@ int fitsBits(int x, int n) {
 */
 int sign(int x) {
 	return ((!!x) | (x >> 31));
-}
+} 
 /*
 * getByte – извлекает n-ый байт из x
 * Нумерация с 0 (младший) to 3 (старший)
@@ -55,7 +55,7 @@ int sign(int x) {
 */
 int getByte(int x, int n) {
 	return 0xff & (x >> (n << 3));
-}
+} 
 /*
 * logicalShift – сдвигает биты x вправо по правилам логического сдвига
 * 0 <= n <= 31
@@ -64,8 +64,8 @@ int getByte(int x, int n) {
 * Предел операций: 20
 */
 int logicalShift(int x, int n) {
-	return (x >> n) & (~(((1 << 31) >> n) << x));
-}
+	return (x >> n) & (~(((1 << 31) >> n) << 1));
+} 
 /*
 * addOK – проверяет, может ли x + y быть вычислено без переполнения
 * Пример: addOK(0x80000000,0x80000000) = 0,
@@ -75,7 +75,7 @@ int logicalShift(int x, int n) {
 */
 int addOK(int x, int y) {
 	return !((x ^ (x + y) & y ^ (x + y)) >> 31);
-}
+} 
 /*
 * bang – Вычисляет !x без использования !
 * Примерs: bang(3) = 0, bang(0) = 1
@@ -84,7 +84,7 @@ int addOK(int x, int y) {
 */
 int bang(int x) {
 	return (((~x + 1) | x) >> 31) + 1;
-}
+} 
 /*
 * conditional – аналог тернарного оператора x ? y : z
 * Пример: conditional(2,4,5) = 4
@@ -92,8 +92,7 @@ int bang(int x) {
 * Предел операций: 16
 */
 int conditional(int x, int y, int z) {
-	int t = ~!x + 1;
-	return ((t ^ y) & y) | (t & z);
+	return z ^ ((z ^ y) & (!x + ~0));
 }
 /*
 * isPower2 - возвращает 1, если x – степень 2, иначе 0
@@ -105,4 +104,4 @@ int conditional(int x, int y, int z) {
 int isPower2(int x) {
 	int t = x + ~0;
 	return !((x & t) | ((x | t) >> 31));
-}
+} 
