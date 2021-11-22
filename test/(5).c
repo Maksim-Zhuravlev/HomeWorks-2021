@@ -14,12 +14,15 @@ int d(int x, int n)
 {
 	int count = 1;
 	if (!n) return 1;
-	while (n) {
-		if (n % 2 == 0) {
+	while (n) 
+	{
+		if (n % 2 == 0) 
+		{
 			n /= 2;
 			x *= x;
 		}
-		else {
+		else 
+		{
 			n--;
 			count *= x;
 		}
@@ -46,7 +49,10 @@ int F(int a, int n, int t)
 		n--;
 		F(a, n, t);
 	}
-	else return t;
+	else
+	{
+		return t;
+	}
 }
 int main()
 {

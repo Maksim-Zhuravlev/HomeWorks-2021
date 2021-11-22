@@ -7,7 +7,10 @@ int F(int n)
 	{
 		return	w = w + F(n - 1) + F(n - 2);
 	}
-	else return w + n;
+	else
+	{
+		return w + n;
+	}
 }
 int main()
 {

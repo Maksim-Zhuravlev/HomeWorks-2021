@@ -5,7 +5,10 @@ int main()
 {
 	int q, e, t = 10, j;
 	scanf("%d", &q);
-	if (q > 1) printf("1 ");
+	if (q > 1)
+	{
+		printf("1 ");
+	}
 	for (int i = 2; i <= q; i++)
 	{
 		e = i; t = 10;
@@ -17,6 +20,9 @@ int main()
 				break;
 			}
 		}
-		if (t == 10) printf("%d ", j);
+		if (t == 10)
+		{
+			printf("%d ", j);
+		}
 	}
 }
