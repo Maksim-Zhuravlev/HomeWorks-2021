@@ -5,5 +5,7 @@ add_executable(hashtable
         payload.c payload.h
         hash_functions.c hash_functions.h
 )
+set_target_properties(hashtable PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../HW_4/")
 
-add_executable(test test.c)
+
+

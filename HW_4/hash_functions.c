@@ -49,4 +49,4 @@ size_t hf_sdbm(const keyType key){
 }
 
 
-Hash_Functions hash_functions[] = {&hf_constant, &hf_first_char, &hf_char_sum, &hf_word_length, &hf_djb2, &hf_sdbm};
+HFunc Hash_Functions[] = {&hf_constant, &hf_first_char, &hf_char_sum, &hf_word_length, &hf_djb2, &hf_sdbm};

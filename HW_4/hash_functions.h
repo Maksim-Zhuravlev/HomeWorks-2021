@@ -5,12 +5,12 @@
 #include "payload.h"
 
 
-typedef size_t (*Hash_Functions)(const keyType);
+typedef size_t (*HFunc)(const keyType);
 
-extern Hash_Functions hash_functions[];
+extern HFunc Hash_Functions[];
 
 enum Hash_Functions_List{
-    THE_ANSWER,
+    CONSTANT,
     FIRST_CHAR,
     CHAR_SUM,
     WORD_LENGTH,

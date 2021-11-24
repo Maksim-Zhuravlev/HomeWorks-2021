@@ -5,7 +5,7 @@
 
 
 void printPayload(struct Payload data) {
-    printf("key = %s, value = %d\n", data.key, data.value);
+    printf("key = %s\t\tvalue = %d\n", data.key, data.value);
 }
 
 _Bool compareKeys(keyType key1, keyType key2) {

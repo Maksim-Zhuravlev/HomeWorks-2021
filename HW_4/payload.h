@@ -2,7 +2,7 @@
 #define UNTITLED_PAYLOAD_H
 
 
-#define MAX_WORD_LENGTH 32
+#define MAX_WORD_LENGTH 256
 
 #include <wchar.h>
 
