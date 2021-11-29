@@ -31,7 +31,7 @@ void addNode(struct Linked_List *list, struct Payload data) {
 struct List_Node *findNode(struct Linked_List *list, keyType key) {
     struct List_Node *curr = list->head;
     while (curr != NULL) {
-        if (compareKeys(key, curr->data.key)) {
+        if (!compareKeys(key, curr->data.key)) {
             break;
         }
         curr = curr->next;

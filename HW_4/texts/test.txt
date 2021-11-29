@@ -1,4 +1,6 @@
-ABC <dEfG>
+ABC ABC ABC ABC
+<dEfG> hijk
 Текст ,на, русском
+Текст
 текст.
 ТЕКСТ {ТЕКСТ}

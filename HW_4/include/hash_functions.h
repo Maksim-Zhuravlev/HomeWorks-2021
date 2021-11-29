@@ -15,7 +15,6 @@ enum Hash_Functions_List{
     CHAR_SUM,
     WORD_LENGTH,
     DJB2,
-    SDBM,
 };
 
 
@@ -28,8 +27,6 @@ size_t hf_char_sum(const keyType key);
 size_t hf_word_length(const keyType key);
 
 size_t hf_djb2(const keyType key);
-
-size_t hf_sdbm(const keyType key);
 
 
 #endif //UNTITLED_HASH_FUNCTIONS_H

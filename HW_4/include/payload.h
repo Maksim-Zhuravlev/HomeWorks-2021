@@ -7,7 +7,8 @@
 #include <wchar.h>
 
 typedef int valueType;
-typedef char keyType[MAX_WORD_LENGTH + 1];
+typedef wchar_t keyType[MAX_WORD_LENGTH + 1];
+typedef wchar_t keyType_;
 
 
 struct Payload {
@@ -18,11 +19,11 @@ struct Payload {
 
 void printPayload(struct Payload data);
 
-_Bool compareKeys(keyType key1, keyType key2);
+int compareKeys(keyType key1, keyType key2);
 
 void setPayloadKey(struct Payload *payload, keyType key);
 
 void setPayloadValue(struct Payload *payload, valueType value);
 
-
+int compare_payloads(const void *a, const void *b);
 #endif //UNTITLED_PAYLOAD_H
