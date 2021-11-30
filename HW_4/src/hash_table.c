@@ -114,7 +114,8 @@ void hashtable_to_file(struct HashTable *table, FILE *file) {
     qsort(data, size, sizeof(struct Payload *), compare_payloads);
     for (int i = 0; i < size; ++i) {
         if (data[i]->value > 0) {
-            fprintf(file, "%s %d\n", data[i]->key, data[i]->value);
+//            wprintf(L"%S %d\n", data[i]->key, data[i]->value);
+            fwprintf(file, L"%S %d\n", data[i]->key, data[i]->value);
         }
     }
 }
@@ -125,8 +126,8 @@ void get_hashtable_statistic(struct HashTable *table) {
     size_t min_in_bucket = -1;
     float mean_in_bucket = 0;
     size_t max_in_bucket = 0;
-    char most_popular_word[MAX_WORD_LENGTH] = {0};
-    int value = 0;
+//    char most_popular_word[MAX_WORD_LENGTH] = {0};
+//    int value = 0;
 
 //    int max_str_len = 0;
 //    char buf[MAX_WORD_LENGTH];
@@ -140,10 +141,10 @@ void get_hashtable_statistic(struct HashTable *table) {
         struct List_Node *current = bucket->head;
         if (current) { ++num_non_empty_buckets; }
         while (current) {
-            if (current->data.value > value) {
-                strcpy(most_popular_word, current->data.key);
-                value = current->data.value;
-            }
+//            if (current->data.value > value) {
+//                strcpy(most_popular_word, current->data.key);
+//                value = current->data.value;
+//            }
 //            if (strlen(current->data.key) > max_str_len){
 //                max_str_len = strlen(current->data.key);
 //                strcpy(buf, current->data.key);

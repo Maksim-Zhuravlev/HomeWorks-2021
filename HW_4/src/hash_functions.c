@@ -11,52 +11,27 @@ size_t hf_first_char(const keyType key) {
     return key[0];
 }
 
-size_t hf_char_sum(const keyType key) {
-    size_t ret = 0;
-    // Русские символы в UTF-8 занимают по 2 байта
-    // В GNU/Linux тип wchar_t имеет размер 32 бита. © вики
-    // поэтому есть шанс перепрыгнуть через \0
-    // можно, конечно, в UTF-32 файл перекодировать, но у меня она в консоли не отображается
-    char *key_ = (char *) key;
-    for (int i = 0; i < sizeof(keyType) * (sizeof(keyType) / sizeof(char)); ++i) {
-        if (key_[i] == '\0') {
-            break;
-        }
-        ret += key_[i];
-    }
-//    for (int i = 0; i < sizeof(keyType); ++i) {
-//        if (key[i] == '\0') {
-//            break;
-//        }
-//        ret += key[i];
-//    }
-//    Вывод wprintf из 21 строки hash.c на ./texts/utf.txt
-//    текст 1
-//    текст 2
-//    текст 3
-//    ааааааА 1
-//    текст 1
-//    ааааааЯ 1
-//    текст 1
-//    текст 2
-//    ааааааА 2
-//    текст 2
-//    аааааа 1
-//    текст 4
-
-    return ret;
+size_t hf_word_length(const keyType key) {
+    return wcslen(key);
 }
 
-size_t hf_word_length(const keyType key) {
-    return strlen(key);
+size_t hf_char_sum(const keyType key) {
+    size_t ret = 0;
+
+    int i = 0;
+    while (key[i]) {
+        ret += key[i++];
+    }
+
+    return ret;
 }
 
 //http://www.cse.yorku.ca/~oz/hash.html
 size_t hf_djb2(const keyType key) {
     unsigned long hash = 5381;
-    char c;
-    char *key_ = (char *) key;
-    while (c = *key_++) {
+    wchar_t c;
+
+    while (c = *key++) {
         hash = ((hash << 5) + hash) + c;
     } /* hash * 33 + c */
 
@@ -64,4 +39,4 @@ size_t hf_djb2(const keyType key) {
 }
 
 
-HFunc Hash_Functions[] = {&hf_constant, &hf_first_char, &hf_char_sum, &hf_word_length, &hf_djb2};
+HFunc Hash_Functions[] = {&hf_constant, &hf_first_char, &hf_word_length, &hf_char_sum, &hf_djb2};

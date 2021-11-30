@@ -5,11 +5,11 @@
 
 
 void printPayload(struct Payload data) {
-    printf("key = %s\t\tvalue = %d\n", data.key, data.value);
+    wprintf(L"key = %S\t\tvalue = %d\n", data.key, data.value);
 }
 
 int compareKeys(keyType key1, keyType key2) {
-    return strcmp(key1, key2);
+    return wcscmp(key1, key2);
 }
 
 int compare_payloads(const void *a, const void *b) {
@@ -20,7 +20,7 @@ int compare_payloads(const void *a, const void *b) {
 }
 
 void setPayloadKey(struct Payload *payload, keyType key) {
-    strcpy(payload->key, key);
+    wcscpy(payload->key, key);
 }
 
 void setPayloadValue(struct Payload *payload, valueType value) {

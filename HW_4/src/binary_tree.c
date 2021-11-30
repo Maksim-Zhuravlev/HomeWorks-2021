@@ -6,7 +6,7 @@
 #include "../include/utils.h"
 
 
-struct Binary_Tree *tree_create(keyType key, valueType value) {     // TODO: change?
+struct Binary_Tree *tree_create(keyType key, valueType value) {
     struct Payload payload = {};
     setPayloadKey(&payload, key);
     setPayloadValue(&payload, value);
@@ -132,7 +132,8 @@ void tree_to_file(struct Binary_Tree *tree, FILE *file) {
     qsort(data, size, sizeof(struct Payload *), compare_payloads);
     for (int i = 0; i < size; ++i) {
         if (data[i]->value > 0) {
-            fprintf(file, "%s %d\n", data[i]->key, data[i]->value);
+            wprintf(L"%S %d\n", data[i]->key, data[i]->value);
+            fwprintf(file, L"%S %d\n", data[i]->key, data[i]->value);
         }
     }
 }
@@ -144,7 +145,7 @@ void tree_print(struct Binary_Tree *tree, int depth) {
         return;
     }
     tree_print(tree->left, 1 + depth);
-    printf("%*s %d\n", depth * 8, tree->data.key, tree->data.value);
+    wprintf(L"%*S %d\n", depth * 8, tree->data.key, tree->data.value);
     tree_print(tree->right, 1 + depth);
 }
 

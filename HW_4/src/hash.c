@@ -9,19 +9,21 @@
 #include "../include/linked_list.h"
 #include "../include/hash_table.h"
 #include "../include/hash_functions.h"
+#include "../include/utils.h"
 
 
 void count_words_hash(FILE *file, struct HashTable *hash_table) {
-    keyType_ buffer[MAX_WORD_LENGTH];
+    keyType buffer;
     keyType_ format_string[8];
-    swprintf(format_string, 8, L" %%%ds", MAX_WORD_LENGTH);
+    swprintf(format_string, 8, L" %%%dS", MAX_WORD_LENGTH);
 
+    int c = 0;
     while (fwscanf(file, format_string, buffer) == 1) {
         int new_value = getValue(hash_table, buffer, 0) + 1;
 //        wprintf(L"%s %d\n", buffer, new_value);
         setValue(hash_table, buffer, new_value);
+        ++c;
     }
-//    printHashTable(hash_table);
 }
 
 
@@ -30,20 +32,14 @@ int main(int argc, char *argv[]) {
 
     if (argc != 5) {
         printf("usage: hash <hash table size> <hash_function> <input file> <output file>\n"
-               "Hash functions:\n1 - constant\t2 - first_char\t3 - char_sum\t4 - word_length\t5 - djb2\n"
+               "Hash functions:\n1 - constant\t2 - first_char\t3 - word_length\t4 - char_sum\t5 - djb2\n"
         );
         return 1;
     }
 
-    FILE *f_in = fopen(argv[3], "r, ccs=UTF-8");
-    if (!f_in) {
-        printf("Failed to open input file\n");
-        return 1;
-    }
-    FILE *f_out = fopen(argv[4], "w, ccs=UTF-8");
-    if (!f_out) {
-        printf("Failed to open output file\n");
-        return 1;
+    FILE *f_in, *f_out;
+    if (open_files(&f_in, argv[3], &f_out, argv[4])) {
+        exit(1);
     }
 
     int ht_size = atol(argv[1]);
@@ -68,6 +64,9 @@ int main(int argc, char *argv[]) {
     hashtable_to_file(&hash_table, f_out);
 
     clearHashTable(&hash_table);
+
+    fclose(f_in);
+    fclose(f_out);
 }
 
 
