@@ -1,0 +1,52 @@
+------Max word counted------
+è: 4662
+
+
+-------------------------------------------------------------------------------------------------------------------
+1 buckets HashTable Results
+
+------Chains Analysis------
+Non zero chains count: 1
+Min length of non zero chain: 22411
+Max length of non zero chain: 22411
+Average length of non zero chain: 22411.00
+-------------------------------------------------------------------------------------------------------------------
+10 buckets HashTable Results
+
+------Chains Analysis------
+Non zero chains count: 1
+Min length of non zero chain: 22411
+Max length of non zero chain: 22411
+Average length of non zero chain: 22411.00
+-------------------------------------------------------------------------------------------------------------------
+100 buckets HashTable Results
+
+------Chains Analysis------
+Non zero chains count: 1
+Min length of non zero chain: 22411
+Max length of non zero chain: 22411
+Average length of non zero chain: 22411.00
+-------------------------------------------------------------------------------------------------------------------
+1000 buckets HashTable Results
+
+------Chains Analysis------
+Non zero chains count: 1
+Min length of non zero chain: 22411
+Max length of non zero chain: 22411
+Average length of non zero chain: 22411.00
+-------------------------------------------------------------------------------------------------------------------
+10000 buckets HashTable Results
+
+------Chains Analysis------
+Non zero chains count: 1
+Min length of non zero chain: 22411
+Max length of non zero chain: 22411
+Average length of non zero chain: 22411.00
+-------------------------------------------------------------------------------------------------------------------
+100000 buckets HashTable Results
+
+------Chains Analysis------
+Non zero chains count: 1
+Min length of non zero chain: 22411
+Max length of non zero chain: 22411
+Average length of non zero chain: 22411.00
