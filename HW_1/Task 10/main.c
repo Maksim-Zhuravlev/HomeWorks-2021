@@ -3,7 +3,9 @@
 unsigned long long fib(int n)
 {
     if (n <= 2)
+    {
         return 1;
+    }
 
     unsigned long long prev = 1, next = 1;
 

@@ -43,7 +43,9 @@ int main()
             break;
         }
         if (array[i] < 0)
+        {
             count += 1;
+        }
     }
     if (flag == 0)
     {
