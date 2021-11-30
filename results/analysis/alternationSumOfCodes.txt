@@ -1,5 +1,5 @@
 ------Max word counted------
-è: 4662
+Ð¸: 4662
 
 
 -------------------------------------------------------------------------------------------------------------------
@@ -50,3 +50,4 @@ Non zero chains count: 338
 Min length of non zero chain: 1
 Max length of non zero chain: 367
 Average length of non zero chain: 66.29
+
