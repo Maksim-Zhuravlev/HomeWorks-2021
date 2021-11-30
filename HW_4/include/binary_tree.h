@@ -36,7 +36,5 @@ void tree_to_file(struct Binary_Tree *tree, FILE *file);
 
 void tree_print(struct Binary_Tree *tree, int depth);
 
-//void test_tree();
-
 
 #endif //UNTITLED_BINARY_TREE_H

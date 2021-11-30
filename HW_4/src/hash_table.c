@@ -86,7 +86,7 @@ void printHashTable(struct HashTable *table) {
 
 size_t hashtable_count_elements(struct HashTable *table) {
     size_t c = 0;
-    for (int i = 0; i < table->size; ++i) {
+    for (size_t i = 0; i < table->size; ++i) {
         struct List_Node *current = table->buckets[i].head;
         while (current) {
             ++c;
@@ -102,7 +102,7 @@ void hashtable_to_file(struct HashTable *table, FILE *file) {
     struct Payload *data[size];
     int ind = 0;
 
-    for (int i = 0; i < table->size; ++i) {
+    for (size_t i = 0; i < table->size; ++i) {
         struct List_Node *current = table->buckets[i].head;
         while (current) {
             data[ind] = &current->data;
@@ -112,7 +112,7 @@ void hashtable_to_file(struct HashTable *table, FILE *file) {
     }
 
     qsort(data, size, sizeof(struct Payload *), compare_payloads);
-    for (int i = 0; i < size; ++i) {
+    for (size_t i = 0; i < size; ++i) {
         if (data[i]->value > 0) {
 //            wprintf(L"%S %d\n", data[i]->key, data[i]->value);
             fwprintf(file, L"%S %d\n", data[i]->key, data[i]->value);
@@ -132,7 +132,7 @@ void get_hashtable_statistic(struct HashTable *table) {
 //    int max_str_len = 0;
 //    char buf[MAX_WORD_LENGTH];
 
-    for (int i = 0; i < table->size; ++i) {
+    for (size_t i = 0; i < table->size; ++i) {
         struct Linked_List *bucket = &table->buckets[i];
         mean_in_bucket += bucket->size;
         min_in_bucket = min(min_in_bucket, bucket->size ? bucket->size : min_in_bucket);

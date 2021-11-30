@@ -94,13 +94,13 @@ size_t tree_max_depth(struct Binary_Tree *tree) {
 }
 
 
-size_t tree_min_depth(struct Binary_Tree *tree){
+size_t tree_min_depth(struct Binary_Tree *tree) {
     if (!tree) { return 0; }
     return min(tree_min_depth(tree->left), tree_min_depth(tree->right)) + 1;
 }
 
 
-float tree_mean_depth(struct Binary_Tree *tree){
+float tree_mean_depth(struct Binary_Tree *tree) {
     if (!tree) { return 0; }
     return (tree_mean_depth(tree->left) + tree_mean_depth(tree->right)) / 2 + 1;
 }
@@ -109,28 +109,37 @@ float tree_mean_depth(struct Binary_Tree *tree){
 void tree_to_file(struct Binary_Tree *tree, FILE *file) {
     size_t size = tree_count_nodes(tree);
     struct Payload *data[size];
-    struct Binary_Tree *current, *stack[size];
-    int stack_ptr = 0, payload_ptr = 0;
-    stack[stack_ptr] = tree;
+    struct Binary_Tree *current, *stack[size + 1];
+    int stack_index = 0, data_index = 0;
 
-    while (stack_ptr >= 0) {
-        current = stack[stack_ptr];
-        --stack_ptr;
+//    stack[stack_index] = tree;
+//    while (stack_index >= 0) {
+//        current = stack[stack_index--];
+//        data[data_index++] = &current->data;
+//        if (current->left != NULL) {
+//            stack[++stack_index] = current->left;
+//        }
+//        if (current->right != NULL) {
+//                stack[++stack_index] = current->right;
+//        }
+//    }
+//    qsort(data, size, sizeof(struct Payload *), compare_payloads);
 
-        data[payload_ptr] = &current->data;
-        ++payload_ptr;
-        if (current->left != NULL) {
-            stack[stack_ptr + 1] = current->left;
-            ++stack_ptr;
-        }
-        if (current->right != NULL) {
-            stack[stack_ptr + 1] = current->right;
-            ++stack_ptr;
+    current = tree;
+    while (1) {
+        if (current) {
+            stack[stack_index++] = current;
+            current = current->left;
+        } else if (stack_index >= 1){
+            current = stack[--stack_index];
+            data[data_index++] = &current->data;
+            current = current->right;
+        } else {
+            break;
         }
     }
 
-    qsort(data, size, sizeof(struct Payload *), compare_payloads);
-    for (int i = 0; i < size; ++i) {
+    for (size_t i = 0; i < size; ++i) {
         if (data[i]->value > 0) {
             wprintf(L"%S %d\n", data[i]->key, data[i]->value);
             fwprintf(file, L"%S %d\n", data[i]->key, data[i]->value);
@@ -148,16 +157,3 @@ void tree_print(struct Binary_Tree *tree, int depth) {
     wprintf(L"%*S %d\n", depth * 8, tree->data.key, tree->data.value);
     tree_print(tree->right, 1 + depth);
 }
-
-/*
-void test_tree() {
-    struct Binary_Tree *tree = tree_create("test", 0);
-    tree_set_value(tree, "12", 3);
-    tree_set_value(tree, "42", 3);
-    tree_set_value(tree, "02", 3);
-    tree_set_value(tree, "abc", 5);
-    tree_set_value(tree, "xyz", 4);
-    tree_set_value(tree, "def", 3);
-    tree_print(tree, 0);
-}
-*/
