@@ -46,7 +46,8 @@ int logicalShift(int x, int n)
 
 int addOK(int x, int y)
 {
-    int result = !((x ^ (x + y) & (y ^ (x + y))) >> 31);
+    int sum = x + y;
+    int result = !(((sum ^ x) & (sum ^ y)) >> 31);
     return result;
 }
 
@@ -64,7 +65,7 @@ int conditional(int x, int y, int z)
 
 int isPower2(int x)
 {
-    int result = !(x ^ (x & ~x + 1)) & (!!x);
+    int result = !(((x + ~0) >> 30) | (x & (x + ~0)));
     return result;
 }
 
