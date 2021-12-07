@@ -363,7 +363,7 @@ int main()
 	//-----
 	delTree(tree);
 	free(tree);
-
+	return 0;
 }
 
 
