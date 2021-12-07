@@ -19,7 +19,7 @@ typedef struct Payload
 {
 	keyType key;
 	valueType value;
-}Payload;
+} Payload;
 
 void printPayload(struct Payload data)
 {
