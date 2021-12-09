@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main()
-{
+
+void main() {
     int s;
+	
     printf("Input length of an array: ");
     scanf("%d", &s);
     if (s == 0) {
@@ -13,6 +13,7 @@ int main()
     } else {
         int n = 0, z = 0;
         int x;
+		
         printf("\nInput elements of the array");
         for (int i = 0; i < s; i++) {
             printf("\nElement is ");
@@ -32,5 +33,5 @@ int main()
             printf("\n+");
         }
     }
-    return 0;
+	printf("\n");
 }
