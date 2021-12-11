@@ -1,130 +1,132 @@
-#include "../Hash Functions/polynome.h"
+#include "../HashFunction/polynome.h"
 
 
-typedef struct CollisionNode {
-	int value;
-	char key[MAX_WORD_LENGTH];
-	struct CollisionNode* next;
-} CollisionNode;
+//------------------------------ Defining structures ---------------------------------------------
+
 
 typedef struct Node {
-	CollisionNode *collision;
-	int value;
 	int hashKey;
+	int value;
 	char key[MAX_WORD_LENGTH];
 	struct Node *left;
 	struct Node *right;
 } Node;
 
-typedef struct {
+typedef struct BinaryTree {
 	Node *root;
 } BinaryTree;
 
 
-void mallocNodeChecker(Node *node) {
-	if (node == NULL) {
-		perror("Can't allocate memory for Node\n");
-		exit(1);
-	}
-}
+//----------------------------- Service functions ----------------------------------
 
-void setDefaultNodeProperties(Node *node, char key[MAX_WORD_LENGTH], int value) {
-	int hashKey = hashFoo(key);
-	
-	node -> left = NULL;
-	node -> right = NULL;
-	node -> collision = NULL;
-	node -> hashKey = hashKey;
-	strcpy(node -> key, key);
-	node -> value = value;
-}
-
-CollisionNode* initCollisionNode(char key[MAX_WORD_LENGTH]) {
-	CollisionNode *collision = (CollisionNode*)malloc(sizeof(CollisionNode));
-	
-	if (collision == NULL) {
-		perror("Can't allocate memory for Collision Node\n");
-		exit(1);
-	}
-	collision -> value = 1;
-	collision -> next = NULL;
-	strcpy(collision -> key, key);
-	
-	return collision;
-}
 
 Node* initNode(char key[MAX_WORD_LENGTH], int value) {
-	Node *node = (Node*)malloc(sizeof(Node));
+	Node *newNode = (Node*)malloc(sizeof(Node));
+	int hashKey = hashFoo(key);
 	
-	mallocNodeChecker(node);
-	setDefaultNodeProperties(node, key, value);
-	
-	return node;
-}
-
-void checkForInit(BinaryTree *tree, char key[MAX_WORD_LENGTH]) {
-	if (tree -> root == NULL) {
-		tree -> root = initNode(key, 0);
+	if (newNode == NULL) {
+		perror("Can't allocate memory for new Node\n");
+		exit(1);
 	}
+	newNode -> hashKey = hashKey;
+	newNode -> value = value;
+	newNode -> left = NULL;
+	newNode -> right = NULL;
+	strcpy(newNode -> key, key);
+	
+	return newNode;
 }
 
-Node* binarySearch(BinaryTree *tree, char key[MAX_WORD_LENGTH]) {
-	checkForInit(tree, key);
+Node* getNode(BinaryTree *tree, char key[MAX_WORD_LENGTH]) {
 	Node *curNode = tree -> root;
 	int hashKey = hashFoo(key);
-	int curNodeHashKey = curNode -> hashKey;
-	Node *newNode;
 	
-	while (1) {
-		if (hashKey < curNodeHashKey) {
-			if (curNode -> left == NULL) {
-				newNode = initNode(key, 0);
-				curNode -> left = newNode;
-				
-				return newNode;
+	if (curNode != NULL) {
+		while (1) {
+			if (hashKey < curNode -> hashKey) {
+				if (curNode -> left != NULL) {
+					curNode = curNode -> left;
+				} else {
+					curNode -> left = initNode(key, 0);
+					
+					return curNode -> left;
+				}
+			} else if (hashKey > curNode -> hashKey) {
+				if (curNode -> right != NULL) {
+					curNode = curNode -> right;
+				} else {
+					curNode -> right = initNode(key, 0);
+					
+					return curNode -> right;
+				}
+			} else {
+				return curNode;
 			}
-			curNode = curNode -> left;
-		} else if (hashKey > curNodeHashKey) {
-			if (curNode -> right == NULL) {
-				newNode = initNode(key, 0);
-				curNode -> right = newNode;
-			
-				return newNode;
-			}
-			curNode = curNode -> right;
-		} else {
-		
-			return curNode;
 		}
-		curNodeHashKey = curNode -> hashKey;
+	} else {
+		tree -> root = initNode(key, 0);
+		
+		return tree -> root;
 	}
 }
-		
-void increment(BinaryTree *tree, char key[MAX_WORD_LENGTH]) {
-	Node *neededNode = binarySearch(tree, key);
-	CollisionNode *curCollision = neededNode -> collision;
 
-	if (!strcmp(neededNode -> key, key)) {
-		neededNode -> value++;
-	} else {
-		while (curCollision -> next != NULL) {
-			if (!strcmp(curCollision -> key, key)) {
-				curCollision -> value++;
-				break;
-			}
-			if (curCollision -> next == NULL) {
-				curCollision -> next = initCollisionNode(key);
-				break;
-			}
-		}
+void printNodes(Node *curNode, FILE *file) {
+	if (curNode -> left != NULL) {
+		printNodes(curNode -> left, file);
 	}
-};
+	fprintf(file, "%s: %d\n", curNode -> key, curNode -> value);
+	if (curNode -> right != NULL) {
+		printNodes(curNode -> right, file);
+	}
+}
 
-BinaryTree* initBinaryTree() {
+void printRelation(Node *curNode) {
+	if (curNode != NULL) {
+		printf("\n%s: %d; Hash = %d; ", curNode -> key, curNode -> value, curNode -> hashKey);
+		if (curNode -> left != NULL) {
+			printf("   left is %s ", curNode -> left -> key);
+		}
+		if (curNode -> right != NULL) {
+			printf("   right is %s ", curNode -> right -> key);
+		}
+		printRelation(curNode -> left);
+		printRelation(curNode -> right);
+	}
+}
+
+void deleteSubTree(Node *curNode) {
+	if (curNode != NULL) {
+		deleteSubTree(curNode -> left);
+		deleteSubTree(curNode -> right);
+		free(curNode);
+	}
+}
+
+void treeDeletedChecker(BinaryTree *tree) {
+	if (tree != NULL) {
+		perror("Something wrong with deleting Binary Tree\n");
+	}
+}
+
+
+//---------------------- BinaryTree functions ---------------------------------------------------------
+
+
+void wordHandler(BinaryTree *tree, char key[MAX_WORD_LENGTH]) {
+	Node *neededNode = getNode(tree, key);
+	
+	neededNode -> value++;
+}
+
+void printTree(BinaryTree *tree, FILE *file) {
+	printNodes(tree -> root, file);
+}
+
+BinaryTree *initBinaryTree() {
 	BinaryTree *tree = (BinaryTree*)malloc(sizeof(BinaryTree));
 	
 	if (tree == NULL) {
-		perror("Can't allocate memory for Binary Tree\n");
+		perror("Can't allocate memory for new Binary Tree\n");
 		exit(1);
 	}
 	tree -> root = NULL;
@@ -132,49 +134,17 @@ BinaryTree* initBinaryTree() {
 	return tree;
 }
 
-void wordHandler(BinaryTree *tree, char key[MAX_WORD_LENGTH]) {
-	increment(tree, key);
-	printf("%s\n", key);
-}
-
-void printCollisions(Node *node, FILE *file) {
-	CollisionNode *curCollision = node -> collision;
+void deleteTree(BinaryTree **treePointer) {
+	BinaryTree *tree = *treePointer;
 	
-	while (curCollision != NULL) {
-		fprintf(file, "%s: %d\n",curCollision -> key, curCollision -> value );
-		curCollision = curCollision -> next;
-	}
-}
-
-void printNodes(Node *node, FILE *file) {
-	if (node != NULL) {
-		printNodes(node -> left, file);
-		printNodes(node -> right, file);
-		printCollisions(node, file);
-		fprintf(file, "%s: %d\n", node -> key, node -> value);
-	}
-}
-
-void printTree(BinaryTree* tree, FILE *file) {
-	printNodes(tree -> root, file);
-}
-
-void printNodesInConsole(Node *node) {
-	if (node != NULL) {
-		printNodesInConsole(node -> left);
-		printNodesInConsole(node -> right);
-		printf("%s: %d\n", node -> key, node -> value);
-	}
-}
-
-void printInConsole(BinaryTree* tree) {
-	printf("\n--------------------------------------------------\n");
-	printNodesInConsole(tree -> root);
-	printf("\n--------------------------------------------------\n");
+	deleteSubTree(tree -> root);
+	free(*treePointer);
+	*treePointer = NULL;
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//------------------------ Analysis functions -----------------------------------------------------------------------------
+
 
 void subTreeHeight(Node *node, int *maxPointer, int curHeight, int *maxValuePointer, char maxKey[MAX_WORD_LENGTH]) {
 	if (node != NULL) {
@@ -207,4 +177,3 @@ void printTreeAnalysis(BinaryTree *tree, FILE *file) {
 	treeHeightAndMax(tree, &maxHeight, &maxValue, maxKey);
 	fprintf(file, "----------------------------------\nThe most common word is %s: %d times\nTree's height is %d\n----------------------------------\n\n", maxKey, maxValue, maxHeight);
 }
-	

@@ -1,5 +1,5 @@
 ----------------------------------
-The most common word is dites: 1 times
-Tree's height is 5
+The most common word is è: 4661 times
+Tree's height is 36
 ----------------------------------
 

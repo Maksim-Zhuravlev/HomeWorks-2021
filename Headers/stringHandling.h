@@ -1,19 +1,17 @@
-#include "binaryTree.h"
-#include <ctype.h>
+#include "./binaryTree.h"
 
-const char alphabet[186] = "ĞĞ‘Ğ’Ğ“Ğ”Ğ•ĞĞ–Ğ—Ğ˜Ğ™ĞšĞ›ĞœĞĞĞŸĞ Ğ¡Ğ¢Ğ£Ğ¤Ğ¥Ğ¦Ğ§Ğ¨Ğ©ĞªĞ¬Ğ«Ğ­Ğ®Ğ¯Ğ°Ğ±Ğ²Ğ³Ğ´ĞµÑ‘Ğ¶Ğ·Ğ¸Ğ¹ĞºĞ»Ğ¼Ğ½Ğ¾Ğ¿Ñ€ÑÑ‚ÑƒÑ„Ñ…Ñ†Ñ‡ÑˆÑ‰ÑŠÑŒÑ‹ÑÑÑabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-'";
-
+const char alphabet[94] = "ÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÜÚÛİŞßàáâãäå¸æçèéêëìíîïğñòóôõö÷ùøüúûışÿabcdefghijklmnopqrstuvwxyz-'";
 
 int validChar(char symb) {
 	int isValid = 0;
 	symb = tolower(symb);
-	
-	for (int i = 0; i <= 185; i++) {
+	for (int i = 0; i <= 93; i++) {
 		if (symb == alphabet[i]) {
 			isValid = 1;
 			break;
 		}
 	}
+	
 	return isValid;
 }
 
