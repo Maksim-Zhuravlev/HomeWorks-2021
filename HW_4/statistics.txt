@@ -1,0 +1,116 @@
+Hash-function: Constant
+=====
+Size of hash-table: 1
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+Size of hash-table: 10
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+Size of hash-table: 100
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+Size of hash-table: 1000
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+Size of hash-table: 10000
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+Size of hash-table: 100000
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+
+Hash-function: Sum of codes
+=====
+Size of hash-table: 1
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+Size of hash-table: 10
+Number of non-zero chains: 10
+Average chain length: 1479
+Min length of non-empty chain: 1415
+Max length of non-empty chain: 1530
+---------------------------------------
+Size of hash-table: 100
+Number of non-zero chains: 100
+Average chain length: 147
+Min length of non-empty chain: 122
+Max length of non-empty chain: 184
+---------------------------------------
+Size of hash-table: 1000
+Number of non-zero chains: 1000
+Average chain length: 14
+Min length of non-empty chain: 2
+Max length of non-empty chain: 38
+---------------------------------------
+Size of hash-table: 10000
+Number of non-zero chains: 1802
+Average chain length: 8
+Min length of non-empty chain: 1
+Max length of non-empty chain: 32
+---------------------------------------
+Size of hash-table: 100000
+Number of non-zero chains: 1802
+Average chain length: 8
+Min length of non-empty chain: 1
+Max length of non-empty chain: 32
+---------------------------------------
+
+Hash-function: Alternative
+=====
+Size of hash-table: 1
+Number of non-zero chains: 1
+Average chain length: 14796
+Min length of non-empty chain: 14796
+Max length of non-empty chain: 14796
+---------------------------------------
+Size of hash-table: 10
+Number of non-zero chains: 10
+Average chain length: 1479
+Min length of non-empty chain: 1434
+Max length of non-empty chain: 1517
+---------------------------------------
+Size of hash-table: 100
+Number of non-zero chains: 100
+Average chain length: 147
+Min length of non-empty chain: 111
+Max length of non-empty chain: 178
+---------------------------------------
+Size of hash-table: 1000
+Number of non-zero chains: 1000
+Average chain length: 14
+Min length of non-empty chain: 3
+Max length of non-empty chain: 28
+---------------------------------------
+Size of hash-table: 10000
+Number of non-zero chains: 7744
+Average chain length: 1
+Min length of non-empty chain: 1
+Max length of non-empty chain: 8
+---------------------------------------
+Size of hash-table: 100000
+Number of non-zero chains: 13781
+Average chain length: 1
+Min length of non-empty chain: 1
+Max length of non-empty chain: 3
+---------------------------------------
