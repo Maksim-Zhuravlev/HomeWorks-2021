@@ -32,12 +32,13 @@ size_t getHash(keyType key)
     return hash;*/
 
     //alternative
-    size_t res = 0;
-    while (*key++)
+    int c;
+    int hash = 0;
+    while (c = *key++)
     {
-        res = res * 31 + *key;
+        hash = hash * 33 + c;
     }
-    return res;
+    return hash;
 }
 
 void printPayload(struct Payload data)
