@@ -1,0 +1,2 @@
+nodes num = 11187
+hight = 33
