@@ -14,6 +14,8 @@
 
 
 #include <assert.h>
+#include <stdio.h>
+#include <limits.h>
 
 
 /**
@@ -124,7 +126,7 @@ bang – Вычисляет ! x без использования !
 Предел операций: 12
 */
 int bang(int x) {
-    return ((x | (~x + 1)) >> 31) & 1;
+    return ((x | (~x + 1)) >> 31) + 1;
 }
 
 
@@ -149,7 +151,7 @@ isPower2 - возвращает 1 , если x – степень 2, иначе 
 Предел операций: 20
 */
 int isPower2(int x) {
-    return !(x & (x + ~0));
+    return !(x >> 31 & 1) & !!x & !(x & (x + ~0));
 }
 
 
@@ -171,7 +173,9 @@ int main() {
     assert(isPower2(-64) == 0);
     assert(isPower2(48) == 0);
     assert(isPower2(-48) == 0);
-    assert(isPower2(0) == 1);
+    assert(isPower2(0) == 0);
+    assert(isPower2(INT_MAX) == 0);
+    assert(isPower2(INT_MIN) == 0);
 
     assert(thirdBits() == 613566756);
 
@@ -187,9 +191,11 @@ int main() {
     assert(fitsBits(-8, 4) == 1);
     assert(fitsBits(-10, 3) == 0);
 
-    assert(bang(3) == 1);
-    assert(bang(0) == 0);
-    assert(bang(-3) == 1);
+    assert(bang(INT_MAX) == 0);
+    assert(bang(3) == 0);
+    assert(bang(0) == 1);
+    assert(bang(-3) == 0);
+    assert(bang(INT_MIN) == 0);
 
     assert(conditional(2, 3, 4) == 3);
     assert(conditional(0, 5, 6) == 6);
