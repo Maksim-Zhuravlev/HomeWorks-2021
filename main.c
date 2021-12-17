@@ -60,6 +60,5 @@ int isPower2(int x)
 
 int main()
 {
-    
     return 0;
 }
