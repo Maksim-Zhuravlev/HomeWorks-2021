@@ -64,8 +64,8 @@ int getByte(int x, int n)
 
 int logicalShift(int x, int n) 
 {
-	int a = ~0, b, res;
-	b = 32 + a * n;
+	int a = ~1, b, res;
+	b = 31 + (~0)* n;
 	a = a << b;
 	a = ~a;
 	x = x >> n;
