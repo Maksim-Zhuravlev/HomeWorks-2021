@@ -1,0 +1,6 @@
+add_executable(fibonacci fibonacci.c)
+add_executable(power power.c)
+add_executable(array_sign array_sign.c)
+add_executable(primes primes.c)
+add_executable(count_substrings count_substrings.c)
+add_executable(palindrome palindrome.c)
