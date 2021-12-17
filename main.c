@@ -12,7 +12,7 @@ int bitXor(int x, int y)
 
 int thirdBits(void)
 {
-    return (4 | (292 << 3) | (292 << 12) | (292 << 21));
+    return (4 | (36 << 3) | (36 << 9) | (36 << 15) | (36 << 21) | (36 << 27));
 }
 
 int fitsBits(int x, int n)
@@ -60,7 +60,6 @@ int isPower2(int x)
 
 int main()
 {
+    
     return 0;
 }
-
-
