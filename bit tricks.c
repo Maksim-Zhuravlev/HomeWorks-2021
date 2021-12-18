@@ -23,7 +23,7 @@ int bitXor(int x, int y) {
 */
 int thirdBits(void) {
 	int r = 36;
-	return r | (r << 6) | (r << 6) | (r << 6) | (r << 6);
+	return r | (r << 6) | (r << 6) | (r << 6);
 } 
 /*
 * fitsBits – возвращает 1, если x может быть представлен на машине с n-разрядами (доп. код)
@@ -74,7 +74,7 @@ int logicalShift(int x, int n) {
 * Предел операций: 20
 */
 int addOK(int x, int y) {
-	return !((x ^ (x + y) & y ^ (x + y)) >> 31);
+	return !((x ^ (x + y)) & (y ^ (x + y)) >> 31);
 } 
 /*
 * bang – Вычисляет !x без использования !
