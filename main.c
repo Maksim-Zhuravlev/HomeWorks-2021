@@ -1,23 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main()
 {
-    int primeNumber, x, i ;
-    printf("Please enter a number:");
-    scanf("%d",&x);
-    primeNumber = 1;
-    for (i=2;i<=x/2;i++){
-        if (x%i==0){
-            primeNumber=0;
-            break;
-        }
+    char string1 [100], string2 [100];
+    puts ("please enter a string :");
+    gets (string1);
+    strcpy (string2 , string1);
+    puts (string2);
+    strrev (string2);
+    int n = strcmp (string1, string2);
+    if (n==0){
+        printf ("we can read this sentence from the right or the left.");
     }
-    if (primeNumber==1){
-            printf("%d is a prim number", x);
-                   }
     else {
-        printf("%d is not prime number", x);
+        printf ("we can not read it.");
     }
+
     return 0;
 }
