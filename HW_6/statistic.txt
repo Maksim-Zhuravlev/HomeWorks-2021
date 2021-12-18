@@ -1,0 +1,1 @@
+Binary tree's height: 38.
