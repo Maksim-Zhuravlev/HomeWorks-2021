@@ -86,7 +86,7 @@ def run_tree(files):
                         print(f'{diff}\n{tree}')
                         continue
 
-                print('|{}|{}|{}|{}|\n'.format(os.path.basename(in_f), *tree.stdout.split()), file=tree_results)
+                print('|{}|{}|{}|{}|\n'.format(*tree.stdout.split()), file=tree_results)
             except sp.TimeoutExpired:
                 print('|{}| | | |\n'.format(os.path.basename(in_f), f'\>{timeout}', file=tree_results))
 

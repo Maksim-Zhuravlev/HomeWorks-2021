@@ -6,14 +6,6 @@
 #include "../include/utils.h"
 
 
-struct Binary_Tree *tree_create(keyType key, valueType value) {
-    struct Payload payload = {};
-    setPayloadKey(&payload, key);
-    setPayloadValue(&payload, value);
-    return tree_create_node(payload);
-}
-
-
 struct Binary_Tree *tree_create_node(struct Payload data) {
     struct Binary_Tree *node = malloc(sizeof(struct Binary_Tree));
     if (node == NULL) {
@@ -62,15 +54,16 @@ valueType tree_get_value(struct Binary_Tree *tree, keyType key, valueType defaul
 }
 
 
-void tree_set_value(struct Binary_Tree *tree, keyType key, valueType value) {
+struct Binary_Tree * tree_set_value(struct Binary_Tree *tree, keyType key, valueType value) {
     struct Binary_Tree *node = tree_find(tree, key);
     if (node) {
         node->data.value = value;
+        return tree;
     } else {
         struct Payload payload = {};
         setPayloadKey(&payload, key);
         setPayloadValue(&payload, value);
-        tree_insert(tree, payload);
+        return tree_insert(tree, payload);
     }
 }
 
@@ -140,10 +133,8 @@ void tree_to_file(struct Binary_Tree *tree, FILE *file) {
     }
 
     for (size_t i = 0; i < size; ++i) {
-        if (data[i]->value > 0) {
-            wprintf(L"%S %d\n", data[i]->key, data[i]->value);
-            fwprintf(file, L"%S %d\n", data[i]->key, data[i]->value);
-        }
+        wprintf(L"%S %d\n", data[i]->key, data[i]->value);
+        fwprintf(file, L"%S %d\n", data[i]->key, data[i]->value);
     }
 }
 
