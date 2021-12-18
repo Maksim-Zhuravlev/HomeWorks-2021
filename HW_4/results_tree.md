@@ -1,10 +1,10 @@
 ## master_i_margarita.txt
 |time|min_depth|max_depth|mean_depth|
 |---|---|---|---|
-|master_i_margarita.txt|0,184|4|37|
+|0,197|4|36|9,731|
 
 ## warandpeace.txt
 |time|min_depth|max_depth|mean_depth|
 |---|---|---|---|
-|warandpeace.txt|0,678|6|44|
+|0,643|5|44|10,188|
 

@@ -10,8 +10,6 @@ struct Binary_Tree {
 };
 
 
-struct Binary_Tree *tree_create(keyType key, valueType value);
-
 struct Binary_Tree *tree_create_node(struct Payload data);
 
 struct Binary_Tree *tree_insert(struct Binary_Tree *tree, struct Payload data);
@@ -20,7 +18,7 @@ struct Binary_Tree *tree_find(struct Binary_Tree *tree, keyType key);
 
 valueType tree_get_value(struct Binary_Tree *tree, keyType key, valueType default_value);
 
-void tree_set_value(struct Binary_Tree *tree, keyType key, valueType value);
+struct Binary_Tree * tree_set_value(struct Binary_Tree *tree, keyType key, valueType value);
 
 void tree_destroy(struct Binary_Tree *tree);
 

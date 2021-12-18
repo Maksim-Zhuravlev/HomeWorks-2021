@@ -10,15 +10,16 @@
 #include "../include/utils.h"
 
 
-void count_words_tree(FILE *file, struct Binary_Tree *tree) {
+struct Binary_Tree * count_words_tree(FILE *file, struct Binary_Tree *tree) {
     keyType buffer;
     keyType_ format_string[8];
     swprintf(format_string, 8, L" %%%dS", MAX_WORD_LENGTH);
 
     while (fwscanf(file, format_string, buffer) == 1) {
         int new_value = tree_get_value(tree, buffer, 0) + 1;
-        tree_set_value(tree, buffer, new_value);
+        tree = tree_set_value(tree, buffer, new_value);
     }
+    return tree;
 }
 
 
@@ -35,10 +36,10 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    struct Binary_Tree *tree = tree_create(L"о", 0);
+    struct Binary_Tree *tree = NULL;
 
     clock_t start = clock();
-    count_words_tree(f_in, tree);
+    tree = count_words_tree(f_in, tree);
     clock_t stop = clock();
     printf("\n%.3f %zu %zu %.3f\n", (double) (stop - start) / CLOCKS_PER_SEC, tree_min_depth(tree), tree_max_depth(tree), tree_mean_depth(tree));
 

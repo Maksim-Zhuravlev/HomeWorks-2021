@@ -23,4 +23,3 @@ foreach (subdir ${subdirs})
     message(${subdir})
     add_subdirectory(${subdir})
 endforeach ()
-
