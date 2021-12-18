@@ -56,7 +56,7 @@ void main()
     FILE *fileForRead = fopen("book.txt", "r");
     FILE *fileForStatistic = fopen("statistic.txt", "a");
 
-    if (fileForRead == NULL)
+    if (fileForRead == NULL || fileForStatistic == NULL)
     {
         printf("Did not open the file.");
         exit(1);
