@@ -120,5 +120,5 @@ Maximum length of a non-empty linked list: 6
 /////
 Our hash-function: Own funct.
 /////-----
-Binary tree work-time: 2.728164 sec.
+Binary tree work-time: 0.031167 sec.
 /////-----

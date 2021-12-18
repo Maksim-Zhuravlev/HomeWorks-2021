@@ -1,13 +1,12 @@
 //Attention:
 //If you see the error: "Did not open the file. Exiting.", you should:
 //Create build-debug folder and add file "text.txt" into her.
-//Or you can specify the full path to the folder on 341 line of this program.
+//Or you can specify the full path to the folder on 376 line of this program.
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-
 //===================== specific part=========================
 
 #define MAX_WORD_LENGTH 100
@@ -84,9 +83,13 @@ Node *getNode(Payload data)
 	return node;
 }
 
+int compareKeysToMove(keyType key1, keyType key2)
+{
+	return strcmp(key1, key2);
+}
 void addNode(Node *node, Payload data)
 {
-	int move = !compareKeys(data.key,node->data.key);
+	int move = compareKeysToMove(data.key,node->data.key);
 	if (move > 0)
 	{
 		if (NULL == node->right)
@@ -172,6 +175,41 @@ valueType startReturnNode(BinaryTree *tree, keyType key)
 		printf("Searchable key = \"%s\" in tree. Value = %d\n",node->data.key, node->data.value);
 		return 1;
 	}
+}
+int max(int first, int second)
+{
+	if (first > second)
+	{
+		return first;
+	}
+	return second;
+}
+
+void heightOfTree(int height, int *res, Node *node)
+{
+	*res = max(*res, height);
+	if (NULL == node)
+	{
+		return;
+	}
+	int new_height = height + 1;
+	heightOfTree((new_height), res, node->left);
+	heightOfTree((new_height), res, node->right);
+}
+
+void theMostCommonWord(Payload *data, Node *node)
+{
+	if (NULL == node)
+	{
+		return;
+	}
+	if (data->value < node->data.value)
+	{
+		setPayloadKey(data, node->data.key);
+		setPayloadValue(data, node->data.value);
+	}
+	theMostCommonWord(data, node->left);
+	theMostCommonWord(data, node->right);
 }
 
 void printNode(Node *node)
@@ -332,9 +370,6 @@ void destroyer_of_bad_signs(char *word, char *good_word)
 
 int main()
 {
-	clock_t start = clock();
-	BinaryTree *tree = createBinaryTree();
-	//-----
 	FILE *fp;
 	char word[MAX_WORD_LENGTH + 1];
 	char good_word[MAX_WORD_LENGTH + 2];
@@ -343,23 +378,35 @@ int main()
 		printf("Did not open the file. Exiting.");
 		exit(1);
 	}
-
+	clock_t start = clock();
+	BinaryTree *tree = createBinaryTree();
+	//-----
 	while (fscanf(fp, "%s", word) != EOF)
 	{
 		destroyer_of_bad_signs(word, good_word);
 		Payload data = {.value = 1};
 		setPayloadKey(&data, good_word);
 		startAddNode(tree, data);
+
 	}
+	clock_t finish = clock();
 	fclose(fp);
 	//-----
 	printBinaryTree(tree);
-	clock_t finish = clock();
 	double timeElapsed = ((double) (finish - start)) / CLOCKS_PER_SEC;
 	printf("Work-time: %f sec.\n", timeElapsed);
 	//word-search
 	startReturnNode(tree, "Куприн");
 	startReturnNode(tree, "НеКуприн");
+	//height of tree
+	int height = 0;
+	int res = 0;
+	heightOfTree(height, &res, tree->head);
+	printf("Height of tree: %d\n", res);
+	//the most common word
+	Payload common_word = {.value = 1, .key = ""};
+	theMostCommonWord(&common_word, tree->head);
+	printf("The most common word: \"%s\" (%d)\n", common_word.key, common_word.value);
 	//-----
 	delTree(tree);
 	free(tree);
