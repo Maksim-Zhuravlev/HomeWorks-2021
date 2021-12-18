@@ -50,12 +50,13 @@ int addOK(int x, int y)
 // logicalShift - сдвигает биты x вправо поправилам логического сдвига
 int logicalShift(int x, int n)
 {
-	int res;
+  int res;
 
-	x = x >> n;
-	res = x & 4294967295;
+  res = x   >> (n != 0);
+  res = res &  (2147483647 - 2147483648*(n == 0));
+  res = res >> (n - 1)*(n != 0);
 
-	return res;
+  return res;
 }
 ///////////////////////////////////////////////
 // getByte - извлекает n-ый байт из x
@@ -85,8 +86,8 @@ int fitsBits(int x, int n)
 	return B;
 }
 ///////////////////////////////////////////////
-// thirBits - возвращает int, каждый третий бит которого, считая с младшего, 1, остальные биты 0
-int thirBits(void)
+// thirdBits - возвращает int, каждый третий бит которого, считая с младшего, 1, остальные биты 0
+int thirdBits(void)
 {
 	int f;
 
