@@ -46,8 +46,10 @@ struct segment { // segment of queue
 
 void statistic(struct binary_tree* tree) {
 	size_t nodes_num = 0, hight = 0;
+	struct payload the_most_freq_word = { .value = 0 };
 	if (!tree->root) {
 		printf("nodes num = %d, hight = %d\n", 0, 0);
+		printf("the most frequent word not exist\n");
 		return;
 	}
 
@@ -83,12 +85,17 @@ void statistic(struct binary_tree* tree) {
 		++nodes_num;
 		hight = head->hight;
 
-		struct segement* saved = head->next;
+		if (node->data.value > the_most_freq_word.value) {
+			the_most_freq_word = node->data;
+		}
+
+		struct segment* saved = head->next;
 		free(head);
 		head = saved;
 	}
 
 	printf("nodes num = %d, hight = %d\n", nodes_num, hight);
+	printf("the most frequent word: %s, %d occurrences\n", the_most_freq_word.key, the_most_freq_word.value);
 }
 
 int main() {
@@ -103,13 +110,14 @@ int main() {
 
 	struct binary_tree tree = create_binary_tree();
 
-	clear_binary_tree(&tree);
 	char word[max_word_length + 1];
 	while (!feof(in)) {
 		get_word(in, word);
-		set_value(&tree, word, get_value(&tree, word, 0));
+		set_value(&tree, word, get_value(&tree, word, 0) + 1);
 	}
 	statistic(&tree);
+
+	clear_binary_tree(&tree);
 
 	fclose(in);
 
