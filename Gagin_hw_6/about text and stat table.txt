@@ -1,0 +1,124 @@
+О тексте: Александр Куприн «Гранатовый браслет».
+Для большего размера файла произведение было продублировано пять раз.
+Информация о работе бинарного дерева находится ниже информации о работе хеш-таблицы.
+/////-----
+Size of hash-table: 1, Work-time: 4.140054 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Size of hash-table: 10, Work-time: 3.738205 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Size of hash-table: 100, Work-time: 3.783222 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Size of hash-table: 1000, Work-time: 3.751850 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Size of hash-table: 10000, Work-time: 3.737092 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Size of hash-table: 100000, Work-time: 3.739967 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Our hash-function: CONST.
+/////----------
+
+/////----------
+Size of hash-table: 1, Work-time: 3.748713 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Size of hash-table: 10, Work-time: 0.472083 sec.
+Number of non-zero linked lists: 10
+Average linked list length: 581.400000
+Minimum length of a non-empty linked list: 546
+Maximum length of a non-empty linked list: 618
+/////
+Size of hash-table: 100, Work-time: 0.068926 sec.
+Number of non-zero linked lists: 100
+Average linked list length: 58.140000
+Minimum length of a non-empty linked list: 27
+Maximum length of a non-empty linked list: 101
+/////
+Size of hash-table: 1000, Work-time: 0.026869 sec.
+Number of non-zero linked lists: 989
+Average linked list length: 5.878665
+Minimum length of a non-empty linked list: 1
+Maximum length of a non-empty linked list: 20
+/////
+Size of hash-table: 10000, Work-time: 0.023078 sec.
+Number of non-zero linked lists: 2158
+Average linked list length: 2.694161
+Minimum length of a non-empty linked list: 1
+Maximum length of a non-empty linked list: 15
+/////
+Size of hash-table: 100000, Work-time: 0.023998 sec.
+Number of non-zero linked lists: 2166
+Average linked list length: 2.684211
+Minimum length of a non-empty linked list: 1
+Maximum length of a non-empty linked list: 15
+/////
+Our hash-function: Sum of char codes.
+/////-----
+
+/////-----
+Size of hash-table: 1, Work-time: 4.018976 sec.
+Number of non-zero linked lists: 1
+Average linked list length: 5814.000000
+Minimum length of a non-empty linked list: 5814
+Maximum length of a non-empty linked list: 5814
+/////
+Size of hash-table: 10, Work-time: 0.490023 sec.
+Number of non-zero linked lists: 10
+Average linked list length: 581.400000
+Minimum length of a non-empty linked list: 560
+Maximum length of a non-empty linked list: 610
+/////
+Size of hash-table: 100, Work-time: 0.064247 sec.
+Number of non-zero linked lists: 100
+Average linked list length: 58.140000
+Minimum length of a non-empty linked list: 44
+Maximum length of a non-empty linked list: 77
+/////
+Size of hash-table: 1000, Work-time: 0.026240 sec.
+Number of non-zero linked lists: 996
+Average linked list length: 5.837349
+Minimum length of a non-empty linked list: 1
+Maximum length of a non-empty linked list: 14
+/////
+Size of hash-table: 10000, Work-time: 0.020584 sec.
+Number of non-zero linked lists: 4413
+Average linked list length: 1.317471
+Minimum length of a non-empty linked list: 1
+Maximum length of a non-empty linked list: 8
+/////
+Size of hash-table: 100000, Work-time: 0.020736 sec.
+Number of non-zero linked lists: 5634
+Average linked list length: 1.031949
+Minimum length of a non-empty linked list: 1
+Maximum length of a non-empty linked list: 6
+/////
+Our hash-function: Own funct.
+/////-----
+Binary tree work-time: 0.031167 sec.
+/////-----
