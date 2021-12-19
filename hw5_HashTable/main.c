@@ -32,7 +32,7 @@ void statistic(struct hash_table* table) {
 size_t get_word(FILE* in, char* word) {
 	char* locale = setlocale(LC_ALL, "");
 	char c = getc(in);
-	while (!(((c >= 'ï¿½') && (c <= 'ï¿½'))||((c >= 'ï¿½')&&(c<='ï¿½')) || (c == 'ï¿½') || (c == 'ï¿½'))) {
+	while (!(((c >= 'à') && (c <= 'ÿ'))||((c >= 'À')&&(c<='ß')) || (c == '¸') || (c == '¨'))) {
 		if (feof(in)) {
 			word[0] = 0;
 			return EOF;
@@ -40,7 +40,7 @@ size_t get_word(FILE* in, char* word) {
 		c = getc(in);
 	}
 	size_t pos = 0;
-	while ((((c >= 'ï¿½') && (c <= 'ï¿½')) || ((c >= 'ï¿½') && (c <= 'ï¿½')) || (c == 'ï¿½') || (c == 'ï¿½'))) {
+	while ((((c >= 'à') && (c <= 'ÿ')) || ((c >= 'À') && (c <= 'ß')) || (c == '¸') || (c == '¨'))) {
 		if (feof(in)) {
 			word[pos] = 0;
 			return EOF;
@@ -74,7 +74,7 @@ int main() {
 		char word[max_word_length + 1];
 		while (!feof(in)) {
 			get_word(in, word);
-			set_value(&table, word, get_value(&table, word, 0));
+			set_value(&table, word, get_value(&table, word, 0) + 1);
 		}
 		statistic(&table);
 		clear_hash_table(&table);
