@@ -24,13 +24,17 @@ int fitsBits(int x, int n)
 
 int sign(int x)
 {
-    int minus = ~1 + 1;
-    return ((!(x >> 31)) + ( !( !(x >> 31) ) ) );
+    int zero = !(x ^ 0);
+    return (!zero | (x >> 31));
 }
 
 int getByte(int x, int n)
 {
-    return (x << ((4 + ~n) << 3)) >> 24;
+    int mask = 0xFF;
+    int shift = n << 3;
+    mask <<= shift;
+    int res = x & mask;
+    return ((res >> shift) & 0xFF);
 }
 
 int logicalShift(int x, int n)
@@ -44,8 +48,11 @@ int addOK(int x, int y)
     return ( (sign_unsigned_x ^ sign_unsigned_y) | ( !(sign_unsigned_sum ^ sign_unsigned_x) ) );
 }
 
-int bang(int x) {
-    return ((x | (~x + 1)) >> 31) & 1;
+int bang(int x)
+{
+    int minus = (~1 + 1);
+    int zero = ~((x >> 31) & 1) & ((x ^ (x + minus)) >> 31) & 1;
+    return (zero);
 }
 
 int conditional(int x, int y, int z)
@@ -55,7 +62,8 @@ int conditional(int x, int y, int z)
 
 int isPower2(int x)
 {
-    return (!(x & (x + ~0))) & !(x >> 31);
+    int more_zero = (x >> 31) & 1, zero = !(x ^ 0), minus = (~1 + 1);
+    return (!more_zero & !zero & !(x & (x + minus)));
 }
 
 int main()
