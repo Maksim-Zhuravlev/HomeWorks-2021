@@ -8,8 +8,8 @@ int main() {
 	int x;
 	printf("Enter the number of multipliers\n");
 	scanf("%d", &n);
-	printf("Enter %d multipliers\n",n);
-	for (int i=1; i<=n; i++) {
+	printf("Enter %d multipliers\n", n);
+	for (int i = 1; i <= n; i++) {
 		scanf("%d", &x);
 		if (x < 0) {
 			count += 1;
@@ -19,7 +19,7 @@ int main() {
 		}
 	}
 	if (key > 0) {
-		if (count%2 == 0) {
+		if (count % 2 == 0) {
 			printf("The sign is +");
 		}
 		else {

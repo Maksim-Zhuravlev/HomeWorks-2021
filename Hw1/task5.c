@@ -28,6 +28,6 @@ int main()
 	printf("Enter the degree:");
 	scanf("%d", &deg);
 
-	printf("Answer: %d",pow(n, deg);
+	printf("Answer: %d", pow(n, deg);
 	return 0;
 }
