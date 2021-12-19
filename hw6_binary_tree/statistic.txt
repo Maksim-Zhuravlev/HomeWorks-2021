@@ -1,2 +1,3 @@
 nodes num = 11187
 hight = 33
+the most frequent word: и, 1389 occurrences
