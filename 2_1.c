@@ -12,7 +12,8 @@
 long long int power_1 (double number, int pow); // Task 5.1) In any way
 double power_2 (double number, int pow); // Task 5.2) Effectively
 double power_3 (double number, int pow); // Task 5.3) Recursively
-long long int multi (int array[]); // Task 6) array
+int power_4 (int number, int pow); // Task 5.4) System call
+long long int multi (int array[]); // Task 6) Array
 void str (char string[]); // Task 7
 void prime (long long int number); // Task 8
 long long int fibo (int number); // Task 10
@@ -39,6 +40,9 @@ int main ()
 
     // 5.3) Recursively
     printf("5.3) Recursively: %.0lf\n", power_3 (number_a, power));
+
+    // 5.4)
+    printf("5.4) system call: %.0lf\n", power_4 (number_a, power));
 
 
     //Task 6
@@ -127,6 +131,14 @@ double power_3 (double number, int power)
 {
     if(power == 0) return 1;
     return number * pow(number, power - 1);
+}
+
+int power_4 (int number, int pow)
+{
+    if (pow == 0) return 1;
+	if (pow == 1) return number;
+
+	return power_4(number, pow / 2) * power_4(number, pow / 2) * power_4(number, pow % 2);
 }
 
 long long int multi (int array[])
