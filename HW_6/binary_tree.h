@@ -68,7 +68,7 @@ struct Node *getFreeNode(struct Node *parent, struct Payload data)
 void insertNode(struct Node *root, struct Payload data)
 {
     struct Node *curr = root;
-    struct Node *tmp = NULL;
+    struct Node *prev = NULL;
     int cmpKey;
 
     while (curr)
@@ -76,12 +76,12 @@ void insertNode(struct Node *root, struct Payload data)
         cmpKey = compareKeys(data.key, curr->data.key);
         if (cmpKey > 0)
         {
-            tmp = curr;
+            prev = curr;
             curr = curr->right;
         }
         else if (cmpKey < 0)
         {
-            tmp = curr;
+            prev = curr;
             curr = curr->left;
         }
         else
@@ -92,37 +92,37 @@ void insertNode(struct Node *root, struct Payload data)
     }
     if (cmpKey > 0)
     {
-        tmp->right = getFreeNode(tmp, data);
+        prev->right = getFreeNode(prev, data);
     }
     else
     {
-        tmp->left = getFreeNode(tmp, data);
+        prev->left = getFreeNode(prev, data);
     }
 }
 
-struct Node *getNodeByKey(struct Node *root, keyType key)
+struct Node *getNodeByKey(struct Node *node, keyType key)
 {
-    struct Node *tmp = root;
+    struct Node *curr = node;
     int cmpKey;
-    while (tmp)
+    while (curr)
     {
-        if (tmp == root && root->data.key[0] == '\0')
+        if (curr == node && node->data.key[0] == '\0')
         {
-            setPayloadKey(&root->data, key);
-            return root;
+            setPayloadKey(&node->data, key);
+            return node;
         }
-        cmpKey = compareKeys(key, tmp->data.key);
+        cmpKey = compareKeys(key, curr->data.key);
         if (cmpKey > 0)
         {
-            tmp = tmp->right;
+            curr = curr->right;
         }
         else if (cmpKey < 0)
         {
-            tmp = tmp->left;
+            curr = curr->left;
         }
         else
         {
-            return tmp;
+            return curr;
         }
     }
     return NULL;
@@ -154,13 +154,13 @@ valueType getValue(struct Node *tree, keyType key, valueType defVal)
     }
 }
 
-struct Node *getMaxNode(struct Node *root)
+struct Node *getMaxNode(struct Node *node)
 {
-    while (root->right)
+    while (node->right)
     {
-        root = root->right;
+        node = node->right;
     }
-    return root;
+    return node;
 }
 
 void removeNode(struct Node *node)
@@ -230,37 +230,39 @@ struct Node *createBinaryTree()
     return tree;
 }
 
-void clearTree(struct Node *curr)
+void clearTree(struct Node *node)
 {
-    if (curr == NULL)
+    if (node == NULL)
     {
         return;
     }
-    clearTree(curr->right);
-    clearTree(curr->left);
-    free(curr);
+    clearTree(node->right);
+    clearTree(node->left);
+    free(node);
 }
 
-void printTree(struct Node *curr)
+void printTree(struct Node *node)
 {
-    if (curr == NULL)
+    if (node == NULL)
     {
         return;
     }
-    printTree(curr->right);
-    printPayload(curr->data);
-    printTree(curr->left);
+    printTree(node->right);
+    printPayload(node->data);
+    printTree(node->left);
 }
 
 int binaryTreeHeight(struct Node *node)
 {
-    int leftHeight = 0;
-    int rightHeight = 0;
-    int fullHeight = 0;
-    if (node)
+    if (node == NULL)
     {
-        leftHeight = binaryTreeHeight(node->left);
-        rightHeight = binaryTreeHeight(node->right);
+        return 0;
+    }
+    else
+    {
+        int leftHeight = binaryTreeHeight(node->left);
+        int rightHeight = binaryTreeHeight(node->right);
+        int fullHeight = 0;
         if (leftHeight > rightHeight)
         {
             fullHeight = leftHeight + 1;
@@ -269,6 +271,21 @@ int binaryTreeHeight(struct Node *node)
         {
             fullHeight = rightHeight + 1;
         }
+        return fullHeight;
     }
-    return fullHeight;
+}
+
+void frequentWord(struct Node *node, struct Payload *data)
+{
+    if (node == NULL)
+    {
+        return;
+    }
+    if (data->value < node->data.value)
+    {
+        setPayloadValue(data, node->data.value);
+        setPayloadKey(data, node->data.key);
+    }
+    frequentWord(node->right, data);
+    frequentWord(node->left, data);
 }
