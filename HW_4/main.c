@@ -12,17 +12,23 @@ void correctWord(char *phrase, char *word)
 {
     int end = 0;
     int start = 0;
-    char signs[20] = ".,!?;:-()\'\"";
+    char signs[32] = "1234567890-…[]«».,!?;:()\'\"";
 
-    for (int i = 0; i < strlen(signs); i++)
+    for (int i = 0; i < 2; i++)
     {
-        if (phrase[0] == signs[i])
+        if (start == i)
         {
-            start = 1;
+            for (int j = 0; j < strlen(signs); j++)
+            {
+                if (phrase[i] == signs[j])
+                {
+                    start = i + 1;
+                }
+            }
         }
     }
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 5; i++)
     {
         if (end == i)
         {
@@ -40,7 +46,7 @@ void correctWord(char *phrase, char *word)
     {
         if (start == k)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (end == i)
                 {
@@ -85,12 +91,12 @@ int main()
 {
     for (int i = 1; i < 100000 + 1; i *= 10)
     {
-        struct HashTable table = createHashTable(i);
-
+        FILE *fileForStatistic = fopen("statistics.txt", "a");
         FILE *fileForRead = fopen("book.txt", "r");
-
         char phrase[MAX_WORD_LENGTH];
         char word[MAX_WORD_LENGTH];
+        struct HashTable table;
+        struct Payload commonWord = {.value = 0, .key = ""};
 
         if (fileForRead == NULL)
         {
@@ -98,14 +104,23 @@ int main()
             exit(1);
         }
 
+        table = createHashTable(i);
+
         while (fscanf(fileForRead, "%s", phrase) != EOF)
         {
             correctWord(phrase, word);
             setValue(&table, word, getValue(&table, word, 0) + 1);
         }
 
+        if (i == 1)
+        {
+            frequentWord(&table, &commonWord);
+            fprintf(fileForStatistic, "This word occurs %d times in the text: %s.\n", commonWord.value, commonWord.key);
+        }
+
         printf("Size of hash-table: %d\n", i);
         statistics(table);
+
         clearHashTable(&table);
 
         fclose(fileForRead);

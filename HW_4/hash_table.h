@@ -230,3 +230,24 @@ void printHashTable(struct HashTable *table)
         printf("The hash table is empty.\n");
     }
 }
+
+void frequentWord(struct HashTable *table, struct Payload *data)
+{
+    if (table == NULL)
+    {
+        return;
+    }
+    for (int i = 0; i < table->size; ++i)
+    {
+        struct Node *curr = table->buckets[i].head;
+        while (curr->next != NULL)
+        {
+            if (data->value < curr->data.value)
+            {
+                setPayloadValue(data, curr->data.value);
+                setPayloadKey(data, curr->data.key);
+            }
+            curr = curr->next;
+        }
+    }
+}

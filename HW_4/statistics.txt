@@ -1,3 +1,5 @@
+This word occurs 3023 times in the text: и.
+
 Hash-function: Constant
 =====
 Size of hash-table: 1
