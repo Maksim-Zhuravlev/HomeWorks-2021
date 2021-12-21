@@ -74,7 +74,8 @@ int logicalShift(int x, int n) {
 * Предел операций: 20
 */
 int addOK(int x, int y) {
-	return !(((x ^ (x + y)) & (y ^ (x + y)) >> 31);
+	int t = x + y;
+	return !(((x ^ t) & (y ^ t)) >> 31);
 } 
 /*
 * bang – Вычисляет !x без использования !
