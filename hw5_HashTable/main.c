@@ -32,7 +32,7 @@ void statistic(struct hash_table* table) {
 size_t get_word(FILE* in, char* word) {
 	char* locale = setlocale(LC_ALL, "");
 	char c = getc(in);
-	while (!(((c >= 'à') && (c <= 'ÿ'))||((c >= 'À')&&(c<='ß')) || (c == '¸') || (c == '¨'))) {
+	while (!(((c >= 'ï¿½') && (c <= 'ï¿½'))||((c >= 'ï¿½')&&(c<='ï¿½')) || (c == 'ï¿½') || (c == 'ï¿½'))) {
 		if (feof(in)) {
 			word[0] = 0;
 			return EOF;
@@ -40,7 +40,7 @@ size_t get_word(FILE* in, char* word) {
 		c = getc(in);
 	}
 	size_t pos = 0;
-	while ((((c >= 'à') && (c <= 'ÿ')) || ((c >= 'À') && (c <= 'ß')) || (c == '¸') || (c == '¨'))) {
+	while ((((c >= 'ï¿½') && (c <= 'ï¿½')) || ((c >= 'ï¿½') && (c <= 'ï¿½')) || (c == 'ï¿½') || (c == 'ï¿½'))) {
 		if (feof(in)) {
 			word[pos] = 0;
 			return EOF;
@@ -69,13 +69,24 @@ int main() {
 			perror("main: failed to open file text.txt");
 			exit(1);
 		}
-		
+
+		struct payload the_most_freq_word = { .value = 0, .key = "" }; //the most frequent word
+
 		struct hash_table table = create_hash_table(i);
 		char word[max_word_length + 1];
 		while (!feof(in)) {
 			get_word(in, word);
-			set_value(&table, word, get_value(&table, word, 0) + 1);
+			value_type value = get_value(&table, word, 0);
+			++value;
+			set_value(&table, word, value);
+
+			if (value > the_most_freq_word.value) { // the most frequent word compulation
+				the_most_freq_word.value = value;
+				strcpy(the_most_freq_word.key, word);
+			}
 		}
+
+		printf("the most frequent word: %s, %d occurrences\n", the_most_freq_word.key, the_most_freq_word.value);
 		statistic(&table);
 		clear_hash_table(&table);
 		
