@@ -13,8 +13,8 @@ int bitXor(int x, int y) {
 
 
 int thirdBits(void) {
-  int x = (73 << 9) | 73;
-  return (x << 18) | x;
+
+return (292 << 21) | (292 << 12) | (292 << 3) | 292;
 }
 
 
