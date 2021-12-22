@@ -13,10 +13,8 @@ int bitXor(int x, int y) {
 
 
 int thirdBits(void) {
-  int a = 0x49;
-  int b = (a << 9);
-  int c = b + a;
-  return (c << 18) + c;
+  int x = (73 << 9) | 73;
+  return (x << 18) | x;
 }
 
 
@@ -46,7 +44,8 @@ int logicalShift(int x, int n) {
 
 
 int addOK(int x, int y) {
-  return 2;
+  int sum = x + y;
+  return !(((x ^ sum) & (y ^ sum)) >> 31);
 }
 
 
