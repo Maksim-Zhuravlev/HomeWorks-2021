@@ -285,7 +285,7 @@ void WriteStatistic(FILE* textFile, FILE* statisticFile, size_t(*HashFunc)(keyTy
 	}
 
 	HashTableStatistic(&table, statisticFile);
-	fseek(textFile, 9, SEEK_SET);
+	fseek(textFile, 0, SEEK_SET);
 	clearHashTable(&table);
 }
 
@@ -298,7 +298,7 @@ void WriteResult(FILE* textFile, FILE* resultFile, size_t(*HashFunc)(keyType), s
 		countWord(&table, wordWithoutSigns(word), HashFunc);
 	}
 	printHashTable(&table, resultFile);
-	fseek(textFile, 9, SEEK_SET);
+	fseek(textFile, 0, SEEK_SET);
 	clearHashTable(&table);
 }
 
