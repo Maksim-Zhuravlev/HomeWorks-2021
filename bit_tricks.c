@@ -96,7 +96,6 @@ int addOK(int x, int y)
 
 int bang(int x)
 {
-
 	int res, a, b;
 	b = x >> 31;
 	x = x | b;
