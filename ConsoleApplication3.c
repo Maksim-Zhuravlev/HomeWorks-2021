@@ -6,6 +6,8 @@
 #include <math.h>
 #include <locale.h>
 #include <time.h>
+
+
 //===================== specific part=========================
 
 #define MAX_WORD_LENGTH 20
@@ -27,7 +29,7 @@ void printPayload(struct Payload data) {
 
 size_t getHash(keyType key) {
 	size_t res = 0;
-	//return 0;
+	//	return NULL;
 	return res;
 }
 
@@ -134,7 +136,7 @@ struct HashTable createHashTable(size_t size) {
 		exit(1);
 	}
 
-	for (size_t i; i < size; i++) {
+	for (size_t i = 0; i < size; i++) {
 		buckets[i] = createLinkedList();
 	}
 
@@ -166,7 +168,7 @@ void setValue(struct HashTable* table, keyType key, valueType value) {
 		node->data.value = value;
 	}
 	else {
-		struct Payload payload = {};
+		struct Payload payload = { NULL,NULL };
 		setPayloadKey(&payload, key);
 		setPayloadValue(&payload, value);
 		addNode(list, payload);
@@ -193,6 +195,7 @@ void printHashTable(struct HashTable* table) {
 		printf("The hash table is empty\n");
 	}
 }
+
 
 // хеш-функция возвращает сумму кодов символов.
 int sum(char* key)
@@ -222,32 +225,31 @@ int len_max(struct HashTable* table) {
 	return max;
 }
 
-void main() {
-	time_t start, end;
-	volatile long unsigned t;
-	start = time(NULL);
+int main() {
 	int i = -1, w = 0;
 	char data[30];
-	struct HashTable table = createHashTable(10000);
+	struct HashTable table = createHashTable(100000);
 	FILE* file = NULL;
 	setlocale(LC_ALL, "Rus");
-	file = fopen("Войнаимир.txt", "rt");
+	file = fopen("войнаимир.txt", "rt");
 	if (file == NULL) {
 		perror("Failed to open file WarandPeace.");
 		exit(1);
 	}
+	const clock_t start = clock();
 	while (!feof(file)) {
 		i++;
 		fscanf(file, "%s", data);
 		setValue(&table, data, i);
-		//w=w+sum(data);
+		//w = w + sum(data);
 		strcpy(data, "");
 	}
+	//printf("%d\n", len_max(&table));
+	const clock_t finish = clock();
+	double time = (double)(finish - start);
 	fclose(file);
-	printf("%d\n", len_max(&table));
-	//printf("%d\n",w);
-	end = time(NULL);
-	printf("%f сек.\n", difftime(end, start));
+	//printf("%d\n", w);
+	printf("%1f \n", time);
 	printHashTable(&table);
 	clearHashTable(&table);
 	printHashTable(&table);
