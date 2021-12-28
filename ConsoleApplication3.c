@@ -1,4 +1,5 @@
-﻿#include <stdlib.h>
+﻿
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -10,8 +11,7 @@
 
 //===================== specific part=========================
 
-#define MAX_WORD_LENGTH 20
-
+#define MAX_WORD_LENGTH 50
 
 typedef int valueType;
 typedef char keyType[MAX_WORD_LENGTH + 1];
@@ -28,8 +28,8 @@ void printPayload(struct Payload data) {
 }
 
 size_t getHash(keyType key) {
+	//	size_t res = sum(key);
 	size_t res = 0;
-	//	return NULL;
 	return res;
 }
 
@@ -45,9 +45,7 @@ void setPayloadValue(struct Payload* payload, valueType value) {
 	payload->value = value;
 }
 
-
 //===================== common part =========================\
-
 
 struct Node {
 	struct Payload data;
@@ -59,12 +57,10 @@ struct LinkedList {
 	struct Node* head;
 };
 
-
 struct HashTable {
 	size_t size;
 	struct LinkedList* buckets;
 };
-
 
 struct Node* getNode(struct Payload data) {
 	struct Node* res = malloc(sizeof(struct Node));
@@ -72,13 +68,14 @@ struct Node* getNode(struct Payload data) {
 		perror("Not enough memory");
 		exit(1);
 	}
-	res->data = data; //(*res).data 
+	res->data = data; // (*res).data
 	res->next = NULL;
 	return res;
 }
 
 void addNode(struct LinkedList* list, struct Payload data) {
 	struct Node* node = getNode(data);
+
 	if (list->head == NULL) {
 		list->head = node;
 	}
@@ -87,10 +84,7 @@ void addNode(struct LinkedList* list, struct Payload data) {
 		list->head = node;
 	}
 	list->size++;
-
-
 }
-
 
 struct Node* findNode(struct LinkedList* list, keyType key) {
 	struct Node* curr = list->head;
@@ -111,7 +105,6 @@ void printList(struct LinkedList* list) {
 	}
 }
 
-
 void clearList(struct LinkedList* list) {
 	struct Node* curr = list->head;
 	while (curr != NULL) {
@@ -122,7 +115,6 @@ void clearList(struct LinkedList* list) {
 	list->size = 0;
 	list->head = NULL;
 }
-
 
 struct LinkedList createLinkedList() {
 	struct LinkedList list = { .size = 0, .head = NULL };
@@ -140,7 +132,6 @@ struct HashTable createHashTable(size_t size) {
 		buckets[i] = createLinkedList();
 	}
 
-
 	struct HashTable table = { .size = size, .buckets = buckets };
 	return table;
 }
@@ -154,11 +145,9 @@ void clearHashTable(struct HashTable* table) {
 	table->size = 0;
 }
 
-
 size_t getBucket(struct HashTable* table, keyType key) {
 	return getHash(key) % table->size;
 }
-
 
 void setValue(struct HashTable* table, keyType key, valueType value) {
 	size_t bucket = getBucket(table, key);
@@ -197,10 +186,10 @@ void printHashTable(struct HashTable* table) {
 }
 
 
-// хеш-функция возвращает сумму кодов символов.
-int sum(char* key)
+size_t sum(keyType key)
 {
-	int l = strlen(key), hashf = 0;
+	int l = strlen(key);
+	size_t hashf = 0;
 	for (int i = 0; i < l; i++)
 	{
 		hashf = hashf + key[i];
@@ -208,7 +197,6 @@ int sum(char* key)
 	return hashf;
 }
 
-//нахождение длины максимальной цепочки 
 int len_max(struct HashTable* table) {
 	int t = 0, max = 0;
 	for (size_t z = 0; z < table->size; z++)
@@ -226,14 +214,14 @@ int len_max(struct HashTable* table) {
 }
 
 int main() {
-	int i = -1, w = 0;
-	char data[30];
+	int i = -1;
+	char data[50];
 	struct HashTable table = createHashTable(100000);
 	FILE* file = NULL;
 	setlocale(LC_ALL, "Rus");
-	file = fopen("войнаимир.txt", "rt");
+	file = fopen("Voynaimir.txt", "rt");
 	if (file == NULL) {
-		perror("Failed to open file WarandPeace.");
+		perror("Failed to open file Voynaimir.");
 		exit(1);
 	}
 	const clock_t start = clock();
@@ -241,16 +229,14 @@ int main() {
 		i++;
 		fscanf(file, "%s", data);
 		setValue(&table, data, i);
-		//w = w + sum(data);
 		strcpy(data, "");
 	}
-	//printf("%d\n", len_max(&table));
+
+	printf("%d\n", len_max(&table));
 	const clock_t finish = clock();
 	double time = (double)(finish - start);
 	fclose(file);
-	//printf("%d\n", w);
 	printf("%1f \n", time);
 	printHashTable(&table);
 	clearHashTable(&table);
-	printHashTable(&table);
 }
