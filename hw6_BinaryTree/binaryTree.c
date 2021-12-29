@@ -211,6 +211,9 @@ int main() {
 		setPayloadKey(&data, goodWord);
 		addFromHead(tree, data);
 	}
+	
+	clock_t finish = clock();
+	
 	printBinaryTree(tree->head);
 	fclose(file);
 	int* heightPointer;
@@ -220,8 +223,6 @@ int main() {
 	printf("The tree height: %d\n", *heightPointer);
 	deleteNodes(tree->head);
 	free(tree);
-
-	clock_t finish = clock();
 
 	double timeElapsed = ((double)(finish - start)) / CLOCKS_PER_SEC;
 	printf("Time: %f\n\n", timeElapsed);
