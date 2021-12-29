@@ -1,0 +1,133 @@
+Сумма кодов
+baskets: 1
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 53.621000
+baskets: 10
+ Statistics:
+ Min Chain Length: 1513
+ Max Chain Length: 1622
+ Average Chain Length: 1568
+ Elements Count: 15689
+ Time to Fill Table: 7.574000
+baskets: 100
+ Statistics:
+ Min Chain Length: 79
+ Max Chain Length: 248
+ Average Chain Length: 156
+ Elements Count: 15689
+ Time to Fill Table: 0.776000
+baskets: 1000
+ Statistics:
+ Min Chain Length: 1
+ Max Chain Length: 71
+ Average Chain Length: 16
+ Elements Count: 15689
+ Time to Fill Table: 0.278000
+baskets: 10000
+ Statistics:
+ Min Chain Length: 1
+ Max Chain Length: 71
+ Average Chain Length: 12
+ Elements Count: 15689
+ Time to Fill Table: 0.270000
+baskets: 100000
+ Statistics:
+ Min Chain Length: 1
+ Max Chain Length: 71
+ Average Chain Length: 12
+ Elements Count: 15689
+ Time to Fill Table: 0.279000
+
+
+Константа
+baskets: 1
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 56.920000
+baskets: 10
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 51.761000
+baskets: 100
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 58.197000
+baskets: 1000
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 53.185000
+baskets: 10000
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 59.486000
+baskets: 100000
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 57.091000
+
+
+На мой выбор
+baskets: 1
+ Statistics:
+ Min Chain Length: 15689
+ Max Chain Length: 15689
+ Average Chain Length: 15689
+ Elements Count: 15689
+ Time to Fill Table: 49.716000
+baskets: 10
+ Statistics:
+ Min Chain Length: 1523
+ Max Chain Length: 1616
+ Average Chain Length: 1568
+ Elements Count: 15689
+ Time to Fill Table: 6.865000
+baskets: 100
+ Statistics:
+ Min Chain Length: 133
+ Max Chain Length: 192
+ Average Chain Length: 156
+ Elements Count: 15689
+ Time to Fill Table: 0.830000
+baskets: 1000
+ Statistics:
+ Min Chain Length: 5
+ Max Chain Length: 30
+ Average Chain Length: 15
+ Elements Count: 15689
+ Time to Fill Table: 0.275000
+baskets: 10000
+ Statistics:
+ Min Chain Length: 1
+ Max Chain Length: 8
+ Average Chain Length: 1
+ Elements Count: 15689
+ Time to Fill Table: 0.219000
+baskets: 100000
+ Statistics:
+ Min Chain Length: 1
+ Max Chain Length: 4
+ Average Chain Length: 1
+ Elements Count: 15689
+ Time to Fill Table: 0.218000
