@@ -4,9 +4,9 @@
 
 
 /*5 Напишите программу, возводящую число a в целочисленную степень n*/
-int exponentiation(int num, int n) {
+int exponentiation(int a, int n) {
     int res = n;
-    for (int i = 0; i < num - 1; i = i + 1) {
+    for (int i = 0; i < a - 1; i = i + 1) {
         res = res * n;
     }
     return res;
@@ -14,23 +14,26 @@ int exponentiation(int num, int n) {
 
 
 /*6. Напишите программу, определяющую знак (+/-/0) произведения всех элементов массива целых чисел.*/
-void sig(int *x, int n) {
-    int i, k;
-    k = 1;
-    for (i = 0; i < n; i++) {
-        k = k * x[i];
+void sig(int *a, int n) {
+    int sign = 1;
+    for (int i = 0; i < n; ++i) {
+        if (a[i] == 0) {
+            printf("0\n");
+        }
+        if (a[i] < 0) {
+            sign *= -1;
+        }
     }
-    if (k == 0) {
-        printf("%d \n", k);
-    } else if (k > 0) {
-        printf("+ \n");
-    } else {
-        printf("- \n");
+    if (sign < 0) {
+        printf("-\n");
+    }
+    else {
+        printf("+\n");
     }
 }
 
 /*8. Напишите программу, печатающую все простые числа, не превосходящие заданногочисла.*/
-int examination2(int g1) {
+int prime(int g1) {
     int g = 0;
     for (int i = 2; i < (g1 + 1) / 2; ++i) {
         if (g1 % i == 0) {
@@ -43,7 +46,7 @@ int examination2(int g1) {
 
 void simple(int n) {
     for (int i = 1; i < (n + 1); ++i) {
-        if (examination2(i) == 0) {
+        if (prime(i) == 0) {
             printf("%d ", i);
         }
     }
@@ -52,7 +55,7 @@ void simple(int n) {
 }
 
 /*7. Напишите программу, определяющую является строка палиндромом: словом или текстом, одинаково читающимся в обоих направлениях.*/
-void polydrome(char *str) {
+void palydrome(char *str) {
     int j = 0;
     for (int i = 0; i < strlen(str); i++) {
         if (str[i] != ' ') {
@@ -132,9 +135,9 @@ int main() {
     int mas[10] = {2, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     sig(mas, 10);
 
-    printf("Palindrome string or not: ");
+    printf("Palindrome string or not: \n");
     char str[] = "I prefer Pis";
-    polydrome(str);
+    palydrome(str);
 
     printf("Prime numbers: ");
     simple(10);
@@ -149,3 +152,4 @@ int main() {
     printf("%d", fib(30));
     return 0;
 }
+
