@@ -316,11 +316,10 @@ int main() {
             x = getValue(&table, normal_word, 0);
             setValue(&table, normal_word, x + 1);
         }
-
-        //printHashTable(&table);
-
         clock_t finish = clock();
         double time_elapsed = ((double)(finish - start)) / CLOCKS_PER_SEC;
+
+        //printHashTable(&table);
 
         printf("Not null lists: %d\n", not_null_lists(&table));
         printf("Average list length: %lf\n", list_len(&table));
