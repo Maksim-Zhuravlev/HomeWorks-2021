@@ -115,7 +115,7 @@ void addFromNode(struct Node *node, struct Payload data)
 	}
 	if (result == 0)
 	{
-		int x = getValue(node, data.key, data.value); //data.value = 0; - äåôîëòíîå çíà÷åíèå
+		int x = getValue(node, data.key, data.value); //data.value = 0; - Ã¤Ã¥Ã´Ã®Ã«Ã²Ã­Ã®Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥
 		setValue(node, x);
 	}
 
@@ -211,6 +211,8 @@ int main() {
 		setPayloadKey(&data, goodWord);
 		addFromHead(tree, data);
 	}
+	clock_t finish = clock();
+	double timeElapsed = ((double) (finish - start)) / CLOCKS_PER_SEC;
 	printTree(tree->head);
 	fclose(fp);
 
@@ -221,8 +223,6 @@ int main() {
 	printf("Height = %d\n", *height_pointer);
 	deleteNodes(tree->head);
 	free(tree);
-	clock_t finish = clock();
-	double timeElapsed = ((double) (finish - start)) / CLOCKS_PER_SEC;
 	printf("Work-time: %f sec.\n", timeElapsed);
 	return 0;
 }
