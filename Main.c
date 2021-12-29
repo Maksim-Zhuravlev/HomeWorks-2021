@@ -29,7 +29,8 @@ int getByte(int x, int n) {
 }
 
 int logicalShift(int x, int n) {
-	return (int)((unsigned int)x >> n);
+	int mask = ((1 << 31) >> n) << 1;
+	return (x >> n) & ~mask;
 }
 
 int addOK(int x, int y) {
