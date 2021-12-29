@@ -315,7 +315,7 @@ int main()
         while (fscanf(file, "%s", word) != EOF)
         {
             correctWord(word, correct_word);
-            setValueInc(&table, correct_word);
+            setValue(&table, word, getValue(&table, word, 0) + 1);
         }
         printf("Size of hash-table: %d\n", i);
         information(table);
@@ -324,4 +324,3 @@ int main()
     }
     return 0;
 }
-
