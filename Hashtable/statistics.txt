@@ -1,0 +1,131 @@
+For getHash: const:
+
+Hash table size: 1
+Time: 2.243000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+
+Hash table size: 10
+Time: 1.335000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+
+Hash table size: 100
+Time: 1.359000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+
+Hash table size: 1000
+Time: 1.383000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+Hash table size: 10000
+Time: 1.226000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+
+Hash table size: 100000
+Time: 1.315000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+
+
+For getHash: sum of char codes:
+
+Hash table size: 1
+Time: 2.156000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+
+Hash table size: 10
+Time: 0.144000
+The number of nonzero linked lists: 10
+The average length of nonzero linked list: 171.600000
+The minimum length of nonzero list: 146
+The maximum length of nonzero list: 191
+
+Hash table size: 100
+Time: 0.035000
+The number of nonzero linked lists: 100
+The average length of nonzero linked list: 17.160000
+The minimum length of nonzero list: 8
+The maximum length of nonzero list: 29
+
+Hash table size: 1000
+Time: 0.027000
+The number of nonzero linked lists: 267
+The average length of nonzero linked list: 6.426966
+The minimum length of nonzero list: 1
+The maximum length of nonzero list: 20
+
+Hash table size: 10000
+Time: 0.029000
+The number of nonzero linked lists: 267
+The average length of nonzero linked list: 6.426966
+The minimum length of nonzero list: 1
+The maximum length of nonzero list: 20
+
+Hash table size: 100000
+Time: 0.029000
+The number of nonzero linked lists: 267
+The average length of nonzero linked list: 6.426966
+The minimum length of nonzero list: 1
+The maximum length of nonzero list: 20
+
+
+For getHash: own getHash:
+
+Hash table size: 1
+Time: 1.672000
+The number of nonzero linked lists: 1
+The average length of nonzero linked list: 1716.000000
+The minimum length of nonzero list: 1716
+The maximum length of nonzero list: 1716
+
+Hash table size: 10
+Time: 0.134000
+The number of nonzero linked lists: 10
+The average length of nonzero linked list: 171.600000
+The minimum length of nonzero list: 151
+The maximum length of nonzero list: 211
+
+Hash table size: 100
+Time: 0.035000
+The number of nonzero linked lists: 100
+The average length of nonzero linked list: 17.160000
+The minimum length of nonzero list: 8
+The maximum length of nonzero list: 27
+Hash table size: 1000
+Time: 0.023000
+The number of nonzero linked lists: 821
+The average length of nonzero linked list: 2.090134
+The minimum length of nonzero list: 1
+The maximum length of nonzero list: 8
+
+Hash table size: 10000
+Time: 0.019000
+The number of nonzero linked lists: 1568
+The average length of nonzero linked list: 1.094388
+The minimum length of nonzero list: 1
+The maximum length of nonzero list: 4
+
+Hash table size: 100000
+Time: 0.023000
+The number of nonzero linked lists: 1699
+The average length of nonzero linked list: 1.010006
+The minimum length of nonzero list: 1
+The maximum length of nonzero list: 2
