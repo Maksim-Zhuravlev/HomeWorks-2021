@@ -28,7 +28,7 @@ void printPayload(struct Payload data) {
 }
 
 size_t getHash(keyType key) {
-	//	size_t res = sum(key);
+	//size_t res = sum(key);
 	size_t res = 0;
 	return res;
 }
@@ -185,7 +185,7 @@ void printHashTable(struct HashTable* table) {
 	}
 }
 
-
+// хеш-функция возвращает сумму кодов символов.
 size_t sum(keyType key)
 {
 	int l = strlen(key);
@@ -197,6 +197,7 @@ size_t sum(keyType key)
 	return hashf;
 }
 
+//нахождение длины максимальной цепочки
 int len_max(struct HashTable* table) {
 	int t = 0, max = 0;
 	for (size_t z = 0; z < table->size; z++)
@@ -212,7 +213,58 @@ int len_max(struct HashTable* table) {
 	}
 	return max;
 }
+//количество ненулевых цепочек
+int len_NULL(struct HashTable* table) {
+	int t = 0, colvo = 0;
+	for (size_t z = 0; z < table->size; z++)
+	{
+		t = 0;
+		struct Node* c = table->buckets[z].head;
+		while (c != NULL)
+		{
+			t++;
+			c = c->next;
+		}
+		if (t > 0) colvo++;
+	}
+	return colvo;
+}
+//средняя длина цепочки
+int len_cr(struct HashTable* table) {
+	int t = 0, colvo = 0, sum = 0;
+	for (size_t z = 0; z < table->size; z++)
+	{
+		t = 0;
+		struct Node* c = table->buckets[z].head;
+		while (c != NULL)
+		{
+			t++;
+			c = c->next;
+		}
+		colvo++;
+		sum = sum + t;
+	}
+	return sum / colvo;
+}
+//минимальная длина непустой цепочки, 
+int len_min(struct HashTable* table) {
+	int t = 0, min = 900000;
+	for (size_t z = 0; z < table->size; z++)
+	{
+		t = 0;
+		struct Node* c = table->buckets[z].head;
+		while (c != NULL)
+		{
+			t++;
+			c = c->next;
+		}
+		if (t != 0) {
+			min = min < t ? min : t;
+		}
 
+	}
+	return min;
+}
 int main() {
 	int i = -1;
 	char data[50];
@@ -231,9 +283,11 @@ int main() {
 		setValue(&table, data, i);
 		strcpy(data, "");
 	}
-
-	printf("%d\n", len_max(&table));
 	const clock_t finish = clock();
+	printf("%d\n", len_max(&table));
+	printf("%d\n", len_min(&table));
+	printf("%d\n", len_cr(&table));
+	printf("%d\n", len_NULL(&table));
 	double time = (double)(finish - start);
 	fclose(file);
 	printf("%1f \n", time);
