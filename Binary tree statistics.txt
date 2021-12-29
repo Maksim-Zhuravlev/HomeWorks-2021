@@ -1,0 +1,4 @@
+Binary tree
+
+Height of tree: 35
+Time: 3.327000
