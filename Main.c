@@ -315,6 +315,8 @@ int main() {
 			setValue(&table, word, x + 1);
 		}
 
+		clock_t finish = clock();
+
 		printHashTable(&table);
 
 		printf("\nSize of the table = %d\n", i);
@@ -325,7 +327,6 @@ int main() {
 
 		clearHashTable(&table);
 
-		clock_t finish = clock();
 		double time = ((double)(finish - start)) / CLOCKS_PER_SEC;
 		printf("\nWorking hours of the program = %f\n\n\n", time);
 
