@@ -1,0 +1,36 @@
+Size of hash-table: 1
+==============
+The min length of chain: 343
+The max length of chain: 343]nAverage chain length: 343
+Number of non-zero chains: 1
+==============
+Size of hash-table: 10
+==============
+The min length of chain: 343
+The max length of chain: 343]nAverage chain length: 343
+Number of non-zero chains: 1
+==============
+Size of hash-table: 100
+==============
+The min length of chain: 343
+The max length of chain: 343]nAverage chain length: 343
+Number of non-zero chains: 1
+==============
+Size of hash-table: 1000
+==============
+The min length of chain: 343
+The max length of chain: 343]nAverage chain length: 343
+Number of non-zero chains: 1
+==============
+Size of hash-table: 10000
+==============
+The min length of chain: 343
+The max length of chain: 343]nAverage chain length: 343
+Number of non-zero chains: 1
+==============
+Size of hash-table: 100000
+==============
+The min length of chain: 343
+The max length of chain: 343]nAverage chain length: 343
+Number of non-zero chains: 1
+==============
