@@ -257,9 +257,9 @@ int main() {
             x = getValue(&table, normalWord, 0);
             setValue(&table, normalWord, x + 1);
         }
-        printHashTable(&table);
         clock_t finish = clock();
         double time = ((double)(finish - start)) / CLOCKS_PER_SEC;
+        printHashTable(&table);
         printf("Time: %lf\n", time);
         statistics(&table);
         clearHashTable(&table);
