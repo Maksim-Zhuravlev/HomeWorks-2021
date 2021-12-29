@@ -226,5 +226,6 @@ int main() {
     fclose(file);
     printHashTable(&hashtable);
     printf("%i", i);
+    clearHashTable(&hashtable);
 
 }
