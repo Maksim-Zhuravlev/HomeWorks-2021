@@ -219,8 +219,8 @@ int main() {
 
     while (!feof(file)) // пока файл не закончится
     {
-        setValue(&hashtable, data, getHash(data)); // считываем строку в массив
-        setValue(&hashtable, data, i); // заполняем ассоциативный массив
+        fscanf(file, "%s", data); // считываем строку в массив
+        setValue(&hashtable, data, getHash(data)); // заполняем ассоциативный массив
         ++i;
     }
     fclose(file);
