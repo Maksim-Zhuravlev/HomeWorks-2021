@@ -1,6 +1,3 @@
-//There are 3 getHash (hash functions).
-//Two of them are commented now (29th stroke).
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
