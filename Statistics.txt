@@ -1,0 +1,3 @@
+Height of the tree = 41
+
+Working hours of the program = 0.131000 sec.
