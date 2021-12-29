@@ -6,11 +6,6 @@
 #include <locale.h>
 #include <math.h>
 
-//#define MAX_WORD_LENGTH 20
-
-//typedef int valueType;
-//typedef char keyType[MAX_WORD_LENGTH];
-
 
 void getWords(FILE *text, struct HashTable* table){
     char word[20];
@@ -20,6 +15,7 @@ void getWords(FILE *text, struct HashTable* table){
     while (!feof(text))
     {
         c = fgetc(text);
+
         if ( (('À' <= c) && ('ß' >= c)) || (('à' <= c) && ('ÿ' >= c)) )
         {
            char *str;
@@ -48,6 +44,12 @@ int main()
 
     FILE *text;
     text = fopen("text.txt", "r");
+
+    if (text == NULL)
+    {
+		perror("Cannot open the file");
+		exit(1);
+	}
 
     getWords(text, &table);
     printf_statistic(&table);
