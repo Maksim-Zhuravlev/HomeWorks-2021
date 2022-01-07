@@ -25,6 +25,21 @@ void printPayload(struct Payload data) {
 	printf("key = %s, value = %d\n", data.key, data.value);
 }
 
+/*
+size_t getHash(keyType key) {
+    size_t res = 0;
+    return res;
+}
+size_t getHash(keyType key) {
+    unsigned long long len = strlen(key);
+    int res = 0;
+    for(int i = 0; i < len; i++) {
+        res += key[i];
+    }
+    return res;
+}
+*/
+
 size_t getHash(keyType key) {
     int res = 2139062143;
     unsigned long long len = strlen(key);
