@@ -313,7 +313,8 @@ int main() {
             x = getValue(&table, normal_word, 0);
             setValue(&table, normal_word, x + 1);
         }
-
+        fclose(file);
+        
         //printHashTable(&table);
 
         clock_t finish = clock();
