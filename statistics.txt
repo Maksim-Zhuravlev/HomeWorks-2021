@@ -1,0 +1,133 @@
+For const = 67: 
+	
+	1 bucket:
+Time 56087 msec
+number of not empty chains = 1
+average chain length = 24819
+min length = 24819
+max length = 24819
+
+	10 buckets:
+Time 15523 msec
+number of not empty chains = 10
+average chain length = 4121
+min length = 4080
+max length = 4189
+
+	100 buckets:
+Time 3531 msec
+number of not empty chains = 100
+average chain length = 592
+min length = 534
+max length = 641
+
+	1k buckets:
+Time 1231 msec
+number of not empty chains = 1000
+average chain length = 75
+min length = 52
+max length = 111
+
+	10k buckets:
+Time 751 msec
+number of not empty chains = 9998
+average chain length = 8
+min length = 1
+max length = 23
+
+	100k buckets:
+Time 745 msec
+number of not empty chains = 58329
+average chain length = 0
+min length = 1
+max length = 7
+
+
+For sum of character codes:
+
+	1 bucket:
+Time 58240 msec
+number of not empty chains = 1
+average chain length = 24819
+min length = 24819
+max length = 24819
+
+	10 buckets:
+Time 7844 msec
+number of not empty chains = 10
+average chain length = 2481
+min length = 2407
+max length = 2556
+
+	100 buckets:
+Time 1385 msec
+number of not empty chains = 100
+average chain length = 248
+min length = 198
+max length = 299
+
+	1k buckets:
+Time 699 msec
+number of not empty chains = 378
+average chain length = 24
+min length = 1
+max length = 184
+
+	10k buckets:
+Time 548 msec
+number of not empty chains = 513
+average chain length = 2
+min length = 1
+max length = 184
+
+	100k buckets:
+Time 546 msec
+number of not empty chains = 513
+average chain length = 0
+min length = 1
+max length = 184
+
+
+For own function(Jenkins hash function):
+
+	1 bucket:
+Time 59659 msec
+number of not empty chains = 1
+average chain length = 24819
+min length = 24819
+max length = 24819
+
+	10 buckets:
+Time 17699 msec
+number of not empty chains = 10
+average chain length = 4122
+min length = 4063
+max length = 4206
+
+	100 buckets:
+Time 3543 msec
+number of not empty chains = 100
+average chain length = 591
+min length = 540
+max length = 657
+
+	1k buckets:
+Time 993 msec
+number of not empty chains = 1000
+average chain length = 76
+min length = 51
+max length = 103
+
+	10k buckets:
+Time 468 msec
+number of not empty chains = 9999
+average chain length = 8
+min length = 1
+max length = 22
+
+	100k buckets:
+Time 444 msec
+number of not empty chains = 58488
+average chain length = 0
+min length = 1
+max length = 7
