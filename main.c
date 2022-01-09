@@ -14,18 +14,21 @@ int exponentiation(int num, int n) {
 
 
 /*6. Напишите программу, определяющую знак (+/-/0) произведения всех элементов массива целых чисел.*/
-void sig(int *x, int n) {
-    int i, k;
-    k = 1;
-    for (i = 0; i < n; i++) {
-        k = k * x[i];
+void sig(int *k, int n) {
+    int sign = 1;
+    for (int i = 0; i < n; ++i) {
+        if (k[i] == 0) {
+            printf("0\n");
+        }
+        if (k[i] < 0) {
+            sign *= -1;
+        }
     }
-    if (k == 0) {
-        printf("%d \n", k);
-    } else if (k > 0) {
-        printf("+ \n");
-    } else {
-        printf("- \n");
+    if (sign < 0) {
+        printf("-\n");
+    }
+    else {
+        printf("+\n");
     }
 }
 
@@ -52,9 +55,10 @@ void simple(int n) {
 }
 
 /*7. Напишите программу, определяющую является строка палиндромом: словом или текстом, одинаково читающимся в обоих направлениях.*/
-void polydrome(char *str) {
+void palindrome(char *str) {
     int j = 0;
-    for (int i = 0; i < strlen(str); i++) {
+    int L = strlen(str);
+    for (int i = 0; i < L; i++) {
         if (str[i] != ' ') {
             str[j] = tolower((str[i]));
             j++;
