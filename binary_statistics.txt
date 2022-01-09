@@ -1,0 +1,2 @@
+Height of tree: 40
+Time: 0.372000
