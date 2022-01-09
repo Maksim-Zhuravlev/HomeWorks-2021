@@ -7,6 +7,7 @@
 
 #include <limits.h>
 #include <math.h>
+#include <time.h>
 
 #define MAX_WORD_LENGTH 200
 
@@ -204,18 +205,41 @@ void printHashTable(struct HashTable* table) {
     }
 }
 
+void statistic(struct HashTable* table) {
+    size_t max_len = 0, min_len = _CRT_SIZE_MAX, not_empty_num = 0, lens_sum = 0;
+    for (size_t i = 0; i < table->size; ++i) {
+        if ((table->buckets[i]).size) {
+            if (max_len < (table->buckets[i]).size) {
+                max_len = (table->buckets[i]).size;
+            }
+            if (min_len > (table->buckets[i]).size) {
+                min_len = (table->buckets[i]).size;
+            }
+            ++not_empty_num;
+            lens_sum += (table->buckets[i]).size;
+        }
+    }
+    printf("number of not empty chains = %d\n", not_empty_num);
+    printf("average chain length = %d\n", (lens_sum / (table->size)));
+    printf("min length = %d\n", min_len);
+    printf("max length = %d\n", max_len);
+    printf("%d\t%d\t%d\t%d\n", not_empty_num, (lens_sum / (table->size)), min_len, max_len);
+    printf("------\n");
+}
 
 int main() {
     int i = 0;
-    struct HashTable hashtable = createHashTable(100); // количество корзин 
+    clock_t start, finish;
+    struct HashTable hashtable = createHashTable(100000); // количество корзин 
     char data[MAX_WORD_LENGTH]; // массив для чтения
-    FILE* file = NULL; 
+    FILE* file = NULL;
     file = fopen("C:/Test/dostoevsky.txt", "rt");
     if (file == NULL) {
         perror("File error");
         exit(1);
     }
     printf("%s\n", "File is ok");
+    start = clock();
 
     while (!feof(file)) // пока файл не закончится
     {
@@ -223,9 +247,12 @@ int main() {
         setValue(&hashtable, data, getHash(data)); // заполняем ассоциативный массив
         ++i;
     }
+    finish = clock();
     fclose(file);
     printHashTable(&hashtable);
-    printf("%i", i);
+    printf("%i\n", i);
+    printf("Time %d msec\n", (finish - start));
+    statistic(&hashtable);
     clearHashTable(&hashtable);
 
 }

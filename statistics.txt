@@ -1,0 +1,90 @@
+For const = 67: 
+	
+	1 bucket:
+Time 56087 msec
+number of not empty chains = 1
+average chain length = 24819
+min length = 24819
+max length = 24819
+
+	10 buckets:
+Time 15523 msec
+number of not empty chains = 10
+average chain length = 4121
+min length = 4080
+max length = 4189
+
+	100 buckets:
+Time 3531 msec
+number of not empty chains = 100
+average chain length = 592
+min length = 534
+max length = 641
+
+	1k buckets:
+Time 1231 msec
+number of not empty chains = 1000
+average chain length = 75
+min length = 52
+max length = 111
+
+	10k buckets:
+Time 751 msec
+number of not empty chains = 9998
+average chain length = 8
+min length = 1
+max length = 23
+
+	100k buckets:
+Time 745 msec
+number of not empty chains = 58329
+average chain length = 0
+min length = 1
+max length = 7
+
+
+For const = 119: 
+
+	1 bucket:
+Time 75478 msec
+number of not empty chains = 1
+average chain length = 24819
+min length = 24819
+max length = 24819
+
+	10 buckets:
+Time 19004 msec
+number of not empty chains = 10
+average chain length = 4123
+min length = 4022
+max length = 4175
+
+	100 buckets:
+Time 4433 msec
+number of not empty chains = 100
+average chain length = 591
+min length = 541
+max length = 635
+
+	1k buckets:
+Time 1248 msec
+number of not empty chains = 1000
+average chain length = 75
+min length = 49
+max length = 101
+
+	10k buckets:
+Time 1022 msec
+number of not empty chains = 9998
+average chain length = 8
+min length = 1
+max length = 23
+
+	100k buckets:
+Time 925 msec
+number of not empty chains = 58463
+average chain length = 0
+min length = 1
+max length = 7
+
+
