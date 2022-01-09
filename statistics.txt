@@ -1,0 +1,88 @@
+Hash-function: sum of codes.
+
+Size of hash-table: 1.
+Number of non-null: 1.
+Average length: 55537.
+Minimum length non-null: 55537.
+Maximum length: 55537.
+Time taken: 324,168000.
+
+Size of hash-table: 10.
+Number of non-null: 10.
+Average length: 5553.
+Minimum length non-null: 5408.
+Maximum length: 5618.
+Time taken: 38,491000.
+
+Size of hash-table: 100.
+Number of non-null: 100.
+Average length: 555.
+Minimum length non-null: 487.
+Maximum length: 648.
+Time taken: 4,760000.
+
+Size of hash-table: 1000.
+Number of non-null: 785.
+Average length: 55.
+Minimum length non-null: 1.
+Maximum length: 354.
+Time taken: 2,256000.
+
+Size of hash-table: 10000.
+Number of non-null: 1089.
+Average length: 5.
+Minimum length non-null: 1.
+Maximum length: 354.
+Time taken: 2,225000.
+
+Size of hash-table: 100000.
+Number of non-null: 1119.
+Average length: 0.
+Minimum length non-null: 1.
+Maximum length: 354.
+Time taken: 2,249000.
+
+
+Hash-function: constant.
+
+Size of hash-table: 1.
+Number of non-null: 1.
+Average length: 55537.
+Minimum length non-null: 55537.
+Maximum length: 55537.
+Time taken: 324,537000.
+
+Size of hash-table: 10.
+Number of non-null: 1.
+Average length: 5553.
+Minimum length non-null: 55537.
+Maximum length: 55537.
+Time taken: 315,507000.
+
+Size of hash-table: 100.
+Number of non-null: 1.
+Average length: 555.
+Minimum length non-null: 55537.
+Maximum length: 55537.
+Time taken: 318,196000.
+
+Size of hash-table: 1000.
+Number of non-null: 1.
+Average length: 55.
+Minimum length non-null: 55537.
+Maximum length: 55537.
+Time taken: 324,241000.
+
+Size of hash-table: 10000.
+Number of non-null: 1.
+Average length: 5.
+Minimum length non-null: 55537.
+Maximum length: 55537.
+Time taken: 315,772000.
+
+Size of hash-table: 100000.
+Number of non-null: 1.
+Average length: 0.
+Minimum length non-null: 55537.
+Maximum length: 55537.
+Time taken: 329,427000.
