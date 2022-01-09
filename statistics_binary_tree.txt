@@ -1,0 +1,2 @@
+Height of tree: 45
+Time taken: 0,921000.
