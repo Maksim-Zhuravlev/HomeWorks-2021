@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void other() {
-    printf("This is not your computer anymore!\n");
+    printf("Other executed\n");
 }
 
 
