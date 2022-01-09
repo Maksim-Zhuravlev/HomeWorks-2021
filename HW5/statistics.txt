@@ -1,0 +1,140 @@
+getHash function: sum
+
+For table size = 1
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.158000
+
+For table size = 10
+Not null lists: 10
+Average list length: 1181.600000
+Min list length: 1062
+Max list length: 1289
+Time: 0.375000
+
+For table size = 100
+Not null lists: 100
+Average list length: 118.160000
+Min list length: 90
+Max list length: 153
+Time: 0.049000
+
+For table size = 1000
+Not null lists: 1000
+Average list length: 11.816000
+Min list length: 2
+Max list length: 22
+Time: 0.017000
+
+For table size = 10000
+Not null lists: 6960
+Average list length: 1.697701
+Min list length: 1
+Max list length: 6
+Time: 0.014000
+
+For table size = 100000
+Not null lists: 11124
+Average list length: 1.062208
+Min list length: 1
+Max list length: 4
+Time: 0.013000
+
+
+
+
+
+
+getHash function: const
+
+For table size = 1
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.136000
+
+For table size = 10
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.177000
+
+For table size = 100
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.113000
+
+For table size = 1000
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.146000
+
+For table size = 10000
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.145000
+
+For table size = 100000
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.088000
+
+
+
+
+
+getHash function: own
+
+For table size = 1
+Not null lists: 1
+Average list length: 11816.000000
+Min list length: 11816
+Max list length: 11816
+Time: 3.058000
+
+For table size = 10
+Not null lists: 10
+Average list length: 1181.600000
+Min list length: 1097
+Max list length: 1274
+Time: 0.369000
+
+For table size = 100
+Not null lists: 100
+Average list length: 118.160000
+Min list length: 86
+Max list length: 145
+Time: 0.049000
+
+For table size = 1000
+Not null lists: 387
+Average list length: 30.532300
+Min list length: 1
+Max list length: 107
+Time: 0.027000
+
+For table size = 10000
+Not null lists: 485
+Average list length: 24.362887
+Min list length: 1
+Max list length: 103
+Time: 0.026000
+
+For table size = 100000
+Not null lists: 485
+Average list length: 24.362887
+Min list length: 1
+Max list length: 103
+Time: 0.025000
