@@ -28,7 +28,6 @@ struct HashTable {
     struct LinkedList* buckets;
 };
 
-
 size_t getHash(keyType key) {
     const int p = 67; // первое простое число после 66 (количество букв в русском алфавите * 2 )
     long long hash = 0, p_pow = 1;
@@ -42,6 +41,36 @@ size_t getHash(keyType key) {
     return hash;
 }
 
+
+/*
+size_t getHash(keyType key) // сумма кодов символов
+{
+    unsigned long long len = strlen(key);
+    int res = 0;
+    for (int i = 0; i < len; i++) {
+        res += key[i];
+    }
+    return res;
+}
+*/
+
+/*
+size_t getHash(const keyType key) // Jenkins hash function
+{
+    size_t length = MAX_WORD_LENGTH;
+    size_t i = 0;
+    size_t hash = 0;
+    while (i != length) {
+        hash += key[i++];
+        hash += hash << 10;
+        hash ^= hash >> 6;
+    }
+    hash += hash << 3;
+    hash ^= hash >> 11;
+    hash += hash << 15;
+    return hash;
+}
+*/
 _Bool compareKeys(keyType key1, keyType key2) {
     return !strcmp(key1, key2);
 }
@@ -150,12 +179,9 @@ struct HashTable createHashTable(size_t size) {
     for (size_t i = 0; i < size; i++) {
         buckets[i] = createLinkedList();
     }
-
-
     struct HashTable table = { .size = size, .buckets = buckets };
     return table;
 }
-
 void clearHashTable(struct HashTable* table) {
     for (size_t i = 0; i < table->size; i++) {
         clearList(&table->buckets[i]);
@@ -169,6 +195,8 @@ void clearHashTable(struct HashTable* table) {
 size_t getBucket(struct HashTable* table, keyType key) {
     return getHash(key) % table->size; // остаток от деления = номер корзины
 }
+
+
 void setValue(struct HashTable* table, keyType key, valueType value) {
     size_t bucket = getBucket(table, key);
     struct LinkedList* list = &table->buckets[bucket];
