@@ -1,0 +1,135 @@
+Hash-function: sum of codes.
+
+Size of hash-table: 1.
+Time taken: 153,696000.
+Number of non-null: 1.
+Average length: 37932.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+Size of hash-table: 10.
+Time taken: 17,625000.
+Number of non-null: 10.
+Average length: 3793.
+Minimum length non-null: 3733.
+Maximum length: 3849.
+
+Size of hash-table: 100.
+Time taken: 2,916000.
+Number of non-null: 100.
+Average length: 379.
+Minimum length non-null: 338.
+Maximum length: 434.
+
+Size of hash-table: 1000.
+Time taken: 1,689000.
+Number of non-null: 628.
+Average length: 37.
+Minimum length non-null: 1.
+Maximum length: 308.
+
+Size of hash-table: 10000.
+Time taken: 1,621000.
+Number of non-null: 841.
+Average length: 3.
+Minimum length non-null: 1.
+Maximum length: 307.
+
+Size of hash-table: 100000.
+Time taken: 1,703000.
+Number of non-null: 854.
+Average length: 0.
+Minimum length non-null: 1.
+Maximum length: 307.
+
+
+Hash-function: constant.
+
+Size of hash-table: 1.
+Time taken: 153,843000.
+Number of non-null: 1.
+Average length: 37932.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+Size of hash-table: 10.
+Time taken: 148,639000.
+Number of non-null: 1.
+Average length: 3793.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+Size of hash-table: 100.
+Time taken: 155,796000.
+Number of non-null: 1.
+Average length: 379.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+Size of hash-table: 1000.
+Time taken: 158,426000.
+Number of non-null: 1.
+Average length: 37.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+Size of hash-table: 10000.
+Time taken: 154,282000.
+Number of non-null: 1.
+Average length: 3.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+Size of hash-table: 100000.
+Time taken: 154,563000.
+Number of non-null: 1.
+Average length: 0.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+
+Hash-function: Polynomial hashing.
+
+Size of hash-table: 1.
+Time taken: 160,725000.
+Number of non-null: 1.
+Average length: 37932.
+Minimum length non-null: 37932.
+Maximum length: 37932.
+
+Size of hash-table: 10.
+Time taken: 19,613000.
+Number of non-null: 10.
+Average length: 3793.
+Minimum length non-null: 3566.
+Maximum length: 4030.
+
+Size of hash-table: 100.
+Time taken: 3,554000.
+Number of non-null: 81.
+Average length: 379.
+Minimum length non-null: 258.
+Maximum length: 742.
+
+Size of hash-table: 1000.
+Time taken: 3,811000.
+Number of non-null: 81.
+Average length: 37.
+Minimum length non-null: 258.
+Maximum length: 742.
+
+Size of hash-table: 10000.
+Time taken: 3,779000.
+Number of non-null: 81.
+Average length: 3.
+Minimum length non-null: 258.
+Maximum length: 742.
+
+Size of hash-table: 100000.
+Time taken: 3,755000.
+Number of non-null: 81.
+Average length: 0.
+Minimum length non-null: 258.
+Maximum length: 742.
+
+The word и occurs 12438 times.
