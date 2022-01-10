@@ -11,6 +11,9 @@
 
 #define MAX_WORD_LENGTH 100
 
+int max = 0;
+char maxWord[MAX_WORD_LENGTH];
+
 typedef int valueType;
 typedef char keyType[MAX_WORD_LENGTH + 1];
 
@@ -50,6 +53,11 @@ struct Node
 void setValue(struct Node* node, valueType value)
 {
     node->data.value = value + 1;
+    if (node->data.value > max)
+    {
+        max = node->data.value;
+        strcpy(maxWord, node->data.key);
+    }
 }
 
 //===================== common part =========================
@@ -237,6 +245,7 @@ void main() {
     double time = (double)(finish - start) / CLOCKS_PER_SEC;
     treeHeight(tree->head, heightPointer, 0);
     printf("Height of tree: %d\n", *heightPointer);
+    printf("The word %s occurs %d times.\n", maxWord, max);
     fclose(file);
     file = NULL;
     deleteNodes(tree->head);
