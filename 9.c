@@ -15,7 +15,7 @@ int main() {
             a++;
         }
     }
-    printf("%d", n);
+    printf("%d", a);
 
     return 0;
 }
