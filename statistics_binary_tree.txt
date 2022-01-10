@@ -1,0 +1,3 @@
+Height of tree: 45
+The word и occurs 12438 times.
+Time taken: 0,685000.
