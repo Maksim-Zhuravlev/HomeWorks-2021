@@ -11,6 +11,9 @@
 
 #define MAX_WORD_LENGTH 100
 
+int max = 0;
+char maxWord[MAX_WORD_LENGTH];
+
 typedef int valueType;
 typedef char keyType[MAX_WORD_LENGTH + 1];
 
@@ -36,10 +39,25 @@ size_t sumOfCodes(keyType key)
 	return hashf;
 }
 
+size_t polynomialHashing(keyType key)
+{
+	int len = strlen(key);
+	size_t hashf = 0;
+	int x, i, mod = 567, k = 77, m = 2;
+	for (i = 0; i < len; i++)
+	{
+		x = (int)(key[i] - 'a' + 1);
+		hashf = (hashf + m * x) % mod;
+		hashf = (hashf * k) % mod;
+	}
+	return hashf;
+}
+
 size_t getHash(keyType key)
 {
-	size_t res = 0;
+	//size_t res = 0;
 	//size_t res = sumOfCodes(key);
+	size_t res = polynomialHashing(key);
 	return res;
 }
 
@@ -183,20 +201,25 @@ size_t getBucket(struct HashTable* table, keyType key)
 	return getHash(key) % table->size;
 }
 
-void setValue(struct HashTable* table, keyType key, valueType value)
+void setValue(struct HashTable* table, keyType key)
 {
 	size_t bucket = getBucket(table, key);
 	struct LinkedList* list = &table->buckets[bucket];
 	struct Node* node = findNode(list, key);
 	if (node)
 	{
-		node->data.value = value;
+		node->data.value +=1;
+		if (node->data.value > max)
+		{
+			max = node->data.value;
+			strcpy(maxWord, node->data.key);
+		}
 	}
 	else
 	{
 		struct Payload payload = { NULL,NULL };
 		setPayloadKey(&payload, key);
-		setPayloadValue(&payload, value);
+		setPayloadValue(&payload, 1);
 		addNode(list, payload);
 	}
 }
@@ -301,10 +324,35 @@ int maxLen(struct HashTable* table)
 	return max;
 }
 
+void normalWords(char* word, char* normalWord)
+{
+	keyType notNormal = ".,!():;?/1234567890";
+	int i = 0, j, flag, k = 0;
+	while (word[i] != '\0')
+	{
+		flag = 1;
+		j = 0;
+		while (notNormal[j] != '\0' && flag != 0)
+		{
+			if (word[i] == notNormal[j] || word[i] == '\"')
+			{
+				flag = 0;
+			}
+			j++;
+		}
+		if (flag != 0)
+		{
+			normalWord[k] = word[i];
+			k++;
+		}
+		i++;
+	}
+	normalWord[k] = '\0';
+}
+
 void main() {
 	setlocale(LC_ALL, "Rus");
-	int i = 0;
-	char data[MAX_WORD_LENGTH];
+	char data[MAX_WORD_LENGTH], word[MAX_WORD_LENGTH];
 	struct HashTable table = createHashTable(100000);
 	FILE* file = NULL;
 	file = fopen("AnnaKarenina.txt", "rt");
@@ -317,18 +365,20 @@ void main() {
 	while (!feof(file))
 	{
 		fscanf(file, "%s", data);
-		setValue(&table, data, i);
+		normalWords(data, word);
+		setValue(&table, word);
 		strcpy(data, "");
-		i++;
+		strcpy(word, "");
 	}
 	const clock_t finish = clock();
+	double time = (double)(finish - start) / CLOCKS_PER_SEC;
+	printf("Time taken: %1f.\n", time);
 	printf("Number of non-null: %d.\n", nonNull(&table));
 	printf("Average length: %d.\n", averageLen(&table));
 	printf("Minimum length non-null: %d.\n", minLen(&table));
 	printf("Maximum length: %d.\n", maxLen(&table));
-	double time = (double)(finish - start) / CLOCKS_PER_SEC;
+	printf("The word %s occurs %d times.\n", maxWord, max);
 	fclose(file);
 	file = NULL;
-	printf("Time taken: %1f.\n", time);
 	clearHashTable(&table);
 }
